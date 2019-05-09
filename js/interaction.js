@@ -24,8 +24,21 @@ interaction = {
     player.anims.play('turn');
     gameOver = true;
   },
-  touchDoor: function(player, door) {
-    player.latestDoor = door;
+  touchDoor: function (player, door) {
+    if (typeof(door.required) == 'undefined') {
+      player.latestDoor = door;
+    } else {
+      if(player.inventory.includes(door.required)) {
+        player.latestDoor = door;
+      }
+    }
+  },
+  pickUpKey: function (player, key) {
+    if (typeof key.collected == 'undefined') {
+      key.disableBody(true, true);
+      key.collected = true;
+      player.inventory.push(key.name);
+    }
   }
 
 };

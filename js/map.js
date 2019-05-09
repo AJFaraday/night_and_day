@@ -1,6 +1,9 @@
 map = {
   draw: function (name) {
     var that = this;
+    if (typeof player !== 'undefined') {
+      player.inventory = [];
+    }
     map.current = name;
     var xml_req = new XMLHttpRequest();
     xml_req.open('GET', (prefix + 'maps/' + name + '.txt?_=' + new Date().getTime()));
@@ -29,12 +32,26 @@ map = {
     platforms.create(x, y, 'box');
   },
   add_door: function (x, y, data) {
-    var door = doors.create(x, y, 'door');
-    for(var key in data) {
+    var sprite = 'door';
+    if (typeof data['sprite'] !== 'undefined') {
+      sprite = data['sprite'];
+    }
+    var door = doors.create(x, y, sprite);
+    for (var key in data) {
       door[key] = data[key];
     }
   },
-  move_player: function(x,y,data) {
-    player.setPosition(x,y);
+  add_key: function (x, y, data) {
+    var sprite = 'key';
+    if (typeof data['sprite'] !== 'undefined') {
+      sprite = data['sprite'];
+    }
+    var key = keys.create(x, y, sprite);
+    for (var data_key in data) {
+      key[data_key] = data[data_key];
+    }
+  },
+  move_player: function (x, y, data) {
+    player.setPosition(x, y);
   }
 };

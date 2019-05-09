@@ -1,5 +1,5 @@
 // Should be the only difference between master and gh-pages
-prefix = '/night_and_day/';
+prefix = '/';
 
 block_size = 48;
 height_in_blocks = 16;
@@ -28,13 +28,17 @@ function preload() {
   game_pointer = this;
 
   utils.load_images.call(this, {
-    ground: prefix + 'assets/platform.png',
-    star: prefix + 'assets/star.png',
-    bomb: prefix + 'assets/bomb.png',
+    ground: 'assets/platform.png',
+    star: 'assets/star.png',
+    bomb: 'assets/bomb.png',
 
-    sky: prefix + 'assets/mine/background.png',
-    box: prefix + 'assets/mine/box.png',
-    door: prefix + 'assets/mine/door.png'
+    sky: 'assets/mine/background.png',
+    box: 'assets/mine/box.png',
+    door: 'assets/mine/door.png',
+    red_door: 'assets/mine/red_door.png',
+    green_door: 'assets/mine/green_door.png',
+    red_key: 'assets/mine/red_key.png',
+    green_key: 'assets/mine/green_key.png'
   });
   this.load.spritesheet('dude',
     prefix + 'assets/mine/dude.png',
@@ -50,6 +54,7 @@ function create() {
   initialize.player.call(this);
   initialize.camera.call(this);
   initialize.doors.call(this);
+  initialize.keys.call(this);
   //initialize.stars.call(this);
   initialize.score.call(this);
   //initialize.bombs.call(this);

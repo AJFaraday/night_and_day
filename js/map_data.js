@@ -18,10 +18,10 @@ map_data = {
   '003-keys': {
     '#': {method: 'add_box'},
     'P': {method: 'move_player'},
-    'R': {method: 'add_door', name: 'R', target: 'D', sprite: 'green_door'},
-    'D': {method: 'add_door'},
-    'G': {method: 'add_door', name: 'G', target: '004-something', sprite: 'green_door'},
-    'r': {method: 'add_key', door: 'R', sprite: 'red_key'},
-    'g': {method: 'add_key', door: 'G', sprite: 'green_key'}
+    'R': {method: 'add_door', name: 'R', target: 'D', sprite: 'red_door', required: 'red_key'},
+    'D': {method: 'add_door', name: 'D'},
+    'G': {method: 'add_door', name: 'G', target: '004-something', sprite: 'green_door', required: 'green_key'},
+    'r': {method: 'add_key', door: 'R', sprite: 'red_key', name: 'red_key'},
+    'g': {method: 'add_key', door: 'G', sprite: 'green_key', name: 'green_key'}
   }
 };

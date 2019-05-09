@@ -9,15 +9,20 @@ initialize = {
   },
   platforms: function () {
     platforms = this.physics.add.staticGroup();
-    map.draw('001-boxes');
+    map.draw('003-keys');
   },
   doors: function () {
     doors = this.physics.add.staticGroup();
     this.physics.add.overlap(player, doors, interaction.touchDoor, null, this);
   },
+  keys: function () {
+    keys = this.physics.add.staticGroup();
+    this.physics.add.overlap(player, keys, interaction.pickUpKey, null, this);
+  },
   player: function () {
     var that = this;
     player = this.physics.add.sprite(100, 100, 'dude');
+    player.inventory = [];
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
     this.anims.create({

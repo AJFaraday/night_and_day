@@ -1,7 +1,7 @@
 utils = {
   load_images: function (defs) {
     for (var prop in defs) {
-      this.load.image(prop, defs[prop]);
+      this.load.image(prop, (prefix +defs[prop]));
     }
   },
   checkOverlap: function(spriteA, spriteB) {
