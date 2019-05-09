@@ -9,8 +9,8 @@ initialize = {
   },
   platforms: function () {
     var level = '001-boxes';
-
     var level_from_url = utils.getQueryVariable('level');
+    
     if (level_from_url) {
       level = level_from_url;
     }
