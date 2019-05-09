@@ -24,16 +24,16 @@ var game = new Phaser.Game(config);
 function preload() {
   game_pointer = this;
   utils.load_images.call(this, {
-    ground: '/assets/platform.png',
-    star: '/assets/star.png',
-    bomb: '/assets/bomb.png',
+    ground: 'assets/platform.png',
+    star: 'assets/star.png',
+    bomb: 'assets/bomb.png',
 
-    sky: '/assets/mine/background.png',
-    box: '/assets/mine/box.png',
-    door: '/assets/mine/door.png'
+    sky: 'assets/mine/background.png',
+    box: 'assets/mine/box.png',
+    door: 'assets/mine/door.png'
   });
   this.load.spritesheet('dude',
-    '/assets/mine/dude.png',
+    'assets/mine/dude.png',
     {frameWidth: 32, frameHeight: 48}
   );
 }
