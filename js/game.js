@@ -23,17 +23,18 @@ var game = new Phaser.Game(config);
 
 function preload() {
   game_pointer = this;
-  utils.load_images.call(this, {
-    ground: 'assets/platform.png',
-    star: 'assets/star.png',
-    bomb: 'assets/bomb.png',
 
-    sky: 'assets/mine/background.png',
-    box: 'assets/mine/box.png',
-    door: 'assets/mine/door.png'
+  utils.load_images.call(this, {
+    ground: '/night_and_day/assets/platform.png',
+    star: '/night_and_day/assets/star.png',
+    bomb: '/night_and_day/assets/bomb.png',
+
+    sky: '/night_and_day/assets/mine/background.png',
+    box: '/night_and_day/assets/mine/box.png',
+    door: '/night_and_day/assets/mine/door.png'
   });
   this.load.spritesheet('dude',
-    'assets/mine/dude.png',
+    '/night_and_day/assets/mine/dude.png',
     {frameWidth: 32, frameHeight: 48}
   );
 }
