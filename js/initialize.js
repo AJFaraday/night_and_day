@@ -8,8 +8,14 @@ initialize = {
     } while (x <= game.config.width);
   },
   platforms: function () {
+    var level = '001-boxes';
+
+    var level_from_url = utils.getQueryVariable('level');
+    if (level_from_url) {
+      level = level_from_url;
+    }
     platforms = this.physics.add.staticGroup();
-    map.draw('001-boxes');
+    map.draw('003-keys');
   },
   doors: function () {
     doors = this.physics.add.staticGroup();

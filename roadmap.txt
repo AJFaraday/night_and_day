@@ -3,6 +3,9 @@ bugs:
 - stuck on bottom of screen (no death event)
 
 features:
+- Simple deploy script
+- death event
+- Level select (accept level param, present list of levels)
 - Dynamic background
 - hint messages on screen
 - default map elements (box, door, player etc) - expanded with level specific

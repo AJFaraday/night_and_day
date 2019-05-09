@@ -3,11 +3,11 @@ map_data = {
     '#': {method: 'add_box'},
     'D': {
       method: 'add_door',
-      target: '002-stars'
+      target: '002-doors'
     },
     'P': {method: 'move_player'}
   },
-  '002-stars': {
+  '002-doors': {
     '#': {method: 'add_box'},
     'P': {method: 'move_player'},
     '1': {method: 'add_door', name: '1', target: '2'},
