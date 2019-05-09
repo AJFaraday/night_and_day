@@ -9,7 +9,7 @@ initialize = {
   },
   platforms: function () {
     platforms = this.physics.add.staticGroup();
-    map.draw('003-keys');
+    map.draw('001-boxes');
   },
   doors: function () {
     doors = this.physics.add.staticGroup();
