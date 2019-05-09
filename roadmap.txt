@@ -1,0 +1,19 @@
+bugs:
+- jumping while going through doors
+- stuck on bottom of screen (no death event)
+
+features:
+- Dynamic background
+- hint messages on screen
+- default map elements (box, door, player etc) - expanded with level specific
+- ledge hanging
+- "butt slam" - R. Burgess
+
+
+notes:
+
+// do something after n milliseconds
+player.active = false;
+this.time.delayedCall(500, function () {
+  player.active = true;
+});
