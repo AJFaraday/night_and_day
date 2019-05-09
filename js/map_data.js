@@ -12,7 +12,7 @@ map_data = {
     'P': {method: 'move_player'},
     '1': {method: 'add_door', name: '1', target: '2'},
     '2': {method: 'add_door', name: '2', target: '1'},
-    '3': {method: 'add_door', target: '003-text'}
+    '3': {method: 'add_door', target: '003-keys'}
   },
   // TODO add_key, interaction with key, sprite name for door
   '003-keys': {
