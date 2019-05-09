@@ -3,7 +3,7 @@ map = {
     var that = this;
     map.current = name;
     var xml_req = new XMLHttpRequest();
-    xml_req.open('GET', prefix + 'maps/' + name + '.txt?_=' + new Date().getTime());
+    xml_req.open('GET', (prefix + 'maps/' + name + '.txt?_=' + new Date().getTime()));
 
     xml_req.onload = function () {
       platforms.clear(true, true);
