@@ -15,7 +15,7 @@ initialize = {
       level = level_from_url;
     }
     platforms = this.physics.add.staticGroup();
-    map.draw('003-keys');
+    map.draw(level);
   },
   doors: function () {
     doors = this.physics.add.staticGroup();
