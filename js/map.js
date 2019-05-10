@@ -37,6 +37,7 @@ map = {
   },
   restart: function() {
     map.draw(map.current);
+    player.active = true;
   },
 
   // Actions referred to in map_data
