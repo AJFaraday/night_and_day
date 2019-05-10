@@ -5,8 +5,8 @@ map = {
       player.inventory = [];
     }
     if (typeof inventoryImages !== 'undefined') {
-      for(i in inventoryImages) {
-        console.log(inventoryImages[i].destroy())//.disableBody()
+      for (i in inventoryImages) {
+        console.log(inventoryImages[i].destroy());
       }
       inventoryImages = [];
     }
@@ -18,6 +18,8 @@ map = {
     xml_req.onload = function () {
       platforms.clear(true, true);
       doors.clear(true, true);
+      water.clear(true, true);
+      keys.clear(true, true);
       var data = map_data[name];
       var shape = xml_req.responseText;
       var rows = shape.split("\n");
@@ -35,17 +37,17 @@ map = {
     };
     xml_req.send();
   },
-  restart: function() {
+  restart: function () {
     map.draw(map.current);
-    player.active = true;
   },
 
   // Actions referred to in map_data
   add_floor: function (x, y, data) {
     platforms.create(x, y, 'floor');
   },
-  add_water: function(x,y,data) {
-    water.create(x, y, 'water');
+  add_water: function (x, y, data) {
+    var w = water.create(x, y, 'water');
+    w.deactivated = false;
   },
   add_box: function (x, y, data) {
     platforms.create(x, y, 'box');
