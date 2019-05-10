@@ -34,7 +34,10 @@ interaction = {
     }
   },
   touchWater: function(player, water) {
-    map.restart();
+    if (player.active) {
+      player.active = false;
+      map.restart();
+    }
   },
   pickUpKey: function (player, key) {
     if (typeof key.collected == 'undefined') {
