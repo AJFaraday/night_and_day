@@ -28,16 +28,13 @@ interaction = {
     if (typeof(door.required) == 'undefined') {
       player.latestDoor = door;
     } else {
-      if(player.inventory.includes(door.required)) {
+      if (player.inventory.includes(door.required)) {
         player.latestDoor = door;
       }
     }
   },
-  touchWater: function(player, water) {
-    if (player.active) {
-      player.active = false;
-      map.restart();
-    }
+  touchWater: function (player, water) {
+    map.restart();
   },
   pickUpKey: function (player, key) {
     if (typeof key.collected == 'undefined') {

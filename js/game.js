@@ -23,6 +23,7 @@ var config = {
 };
 
 var game = new Phaser.Game(config);
+game.restarting = false;
 
 function preload() {
   game_pointer = this;
