@@ -4,6 +4,13 @@ map = {
     if (typeof player !== 'undefined') {
       player.inventory = [];
     }
+    if (typeof inventoryImages !== 'undefined') {
+      for(i in inventoryImages) {
+        console.log(inventoryImages[i].destroy())//.disableBody()
+      }
+      inventoryImages = [];
+    }
+
     map.current = name;
     var xml_req = new XMLHttpRequest();
     xml_req.open('GET', (prefix + 'maps/' + name + '.txt?_=' + new Date().getTime()));
@@ -27,6 +34,17 @@ map = {
       }
     };
     xml_req.send();
+  },
+  restart: function() {
+    map.draw(map.current);
+  },
+
+  // Actions referred to in map_data
+  add_floor: function (x, y, data) {
+    platforms.create(x, y, 'floor');
+  },
+  add_water: function(x,y,data) {
+    water.create(x, y, 'water');
   },
   add_box: function (x, y, data) {
     platforms.create(x, y, 'box');
@@ -54,4 +72,5 @@ map = {
   move_player: function (x, y, data) {
     player.setPosition(x, y);
   }
+
 };

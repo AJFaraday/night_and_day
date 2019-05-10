@@ -17,7 +17,7 @@ action = {
         player.anims.play('turn');
       }
 
-      if (Phaser.Input.Keyboard.JustDown(cursors.up)) {
+      if (Phaser.Input.Keyboard.JustDown(cursors.down)) {
         if (typeof player.latestDoor !== 'undefined' && utils.checkOverlap(player, player.latestDoor)) {
           if (player.latestDoor.target && player.latestDoor.target.includes('-')) {
             console.log('leave this level!');
@@ -39,7 +39,7 @@ action = {
 
       var reset_key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
       if (Phaser.Input.Keyboard.JustDown(reset_key) && map.current) {
-        map.draw(map.current);
+        map.restart();
       }
     }
 //    if (cursors.down.isDown && !player.body.touching.down) {

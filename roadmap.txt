@@ -1,9 +1,8 @@
 bugs:
-- jumping while going through doors
 - stuck on bottom of screen (no death event)
 
 features:
-- Simple deploy script
+- ground image for bottom of screen
 - death event
 - Level select (accept level param, present list of levels)
 - Dynamic background

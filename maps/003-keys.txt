@@ -12,6 +12,6 @@
                                          |
                                          |
                                          |
-R                                  G   r |
-##########  ##########  #################|
+R                                  G  r  |
+WWWWWWWWWW++WWWWWWWWWW++WWWWWWWWWWWWWWWWW|
 +         +         +         +          |
