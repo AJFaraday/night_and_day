@@ -9,8 +9,8 @@ initialize = {
   },
   platforms: function () {
     var level = '001-boxes';
-
     var level_from_url = utils.getQueryVariable('level');
+    
     if (level_from_url) {
       level = level_from_url;
     }
@@ -20,6 +20,10 @@ initialize = {
   doors: function () {
     doors = this.physics.add.staticGroup();
     this.physics.add.overlap(player, doors, interaction.touchDoor, null, this);
+  },
+  water: function () {
+    water = this.physics.add.staticGroup();
+    this.physics.add.overlap(player, water, interaction.touchWater, null, this);
   },
   keys: function () {
     keys = this.physics.add.staticGroup();
@@ -53,8 +57,10 @@ initialize = {
 
     this.physics.add.collider(player, platforms);
   },
-  score: function () {
-    scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#000'});
+  display: function () {
+    invText = this.add.text(16, 16, 'Inventory:', {fontSize: '32px', fill: '#000'});
+    invText.setScrollFactor(0);
+    inventoryImages = []
   },
   stars: function () {
     stars = this.physics.add.group({

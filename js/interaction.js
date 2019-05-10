@@ -33,11 +33,20 @@ interaction = {
       }
     }
   },
+  touchWater: function(player, water) {
+    map.restart();
+  },
   pickUpKey: function (player, key) {
     if (typeof key.collected == 'undefined') {
-      key.disableBody(true, true);
       key.collected = true;
+      key.destroy();
       player.inventory.push(key.name);
+      var x = 180 + (player.inventory.length * 48);
+      var y = 32;
+      console.log(key.sprite);
+      var inventoryDisplay = this.add.image(x, y, key.sprite);
+      inventoryDisplay.setScrollFactor(0);
+      inventoryImages.push(inventoryDisplay);
     }
   }
 

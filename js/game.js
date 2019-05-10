@@ -32,6 +32,8 @@ function preload() {
     star: 'assets/star.png',
     bomb: 'assets/bomb.png',
 
+    water: 'assets/mine/water.png',
+    floor: 'assets/mine/ground.png',
     sky: 'assets/mine/background.png',
     box: 'assets/mine/box.png',
     door: 'assets/mine/door.png',
@@ -54,9 +56,10 @@ function create() {
   initialize.player.call(this);
   initialize.camera.call(this);
   initialize.doors.call(this);
+  initialize.water.call(this);
   initialize.keys.call(this);
   //initialize.stars.call(this);
-  initialize.score.call(this);
+  initialize.display.call(this);
   //initialize.bombs.call(this);
 }
 
