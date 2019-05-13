@@ -1,7 +1,7 @@
 action = {
   readCursors: function () {
     if (player.active) {
-      var cursors = this.input.keyboard.createCursorKeys();
+      cursors = this.input.keyboard.createCursorKeys();
       if (cursors.left.isDown) {
         player.setVelocityX(-160);
 
@@ -14,7 +14,9 @@ action = {
       }
       else {
         player.setVelocityX(0);
-        player.anims.play('turn');
+        if (!player.slamming) {
+          player.anims.play('turn');
+        }
       }
 
       if (Phaser.Input.Keyboard.JustDown(cursors.down)) {
@@ -42,13 +44,14 @@ action = {
         map.restart();
       }
     }
-//    if (cursors.down.isDown && !player.body.touching.down) {
-//      player.setBounce(1.1);
-//      player.setVelocityY(600);
-//    }
-    //   if (player.body.touching.down) {
-//      player.setBounce(0.2);
-//    }
+    if (cursors.down.isDown && !player.body.blocked.down && !player.slamming) {
+      player.anims.play('slam', true);
+      player.slamming = true;
+      player.setVelocityY(400);
+    }
+    if (player.body.touching.down) {
+      player.slamming = false;
+    }
   }
 }
 ;

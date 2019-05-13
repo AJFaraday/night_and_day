@@ -47,14 +47,18 @@ function preload() {
     prefix + 'assets/mine/dude.png',
     {frameWidth: 32, frameHeight: 48}
   );
+  this.load.spritesheet('breaking_box',
+    prefix + 'assets/mine/breaking_box.png',
+    {frameWidth: 48, frameHeight: 48}
+  );
 }
 
 function create() {
   score = 0;
 
   initialize.background.call(this);
-  initialize.platforms.call(this);
   initialize.player.call(this);
+  initialize.platforms.call(this);
   initialize.camera.call(this);
   initialize.doors.call(this);
   initialize.water.call(this);

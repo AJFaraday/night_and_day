@@ -10,12 +10,32 @@ initialize = {
   platforms: function () {
     var level = '001-boxes';
     var level_from_url = utils.getQueryVariable('level');
-    
+
     if (level_from_url) {
       level = level_from_url;
     }
     platforms = this.physics.add.staticGroup();
     map.draw(level);
+
+    // add breaking animation
+    var anim = this.anims.create({
+      key: 'break',
+      frames: this.anims.generateFrameNumbers('breaking_box', {start: 0, end: 9}),
+      frameRate: 20,
+      repeat: 0
+    });
+
+    this.physics.add.collider(
+      player,
+      platforms,
+      function (player, platform) {
+        if (player.slamming && platform.breaking) {
+          platform.anims.play('break', false);
+          platform.once('animationcomplete', () => {
+            platform.destroy();
+        });
+        }
+      });
   },
   doors: function () {
     doors = this.physics.add.staticGroup();
@@ -32,7 +52,6 @@ initialize = {
   player: function () {
     var that = this;
     player = this.physics.add.sprite(100, 100, 'dude');
-    player.inventory = [];
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
     this.anims.create({
@@ -54,8 +73,15 @@ initialize = {
       frameRate: 10,
       repeat: -1
     });
+    this.anims.create({
+      key: 'slam',
+      frames: [{key:'dude', frame: 9}],
+      frameRate: 20
+    });
 
-    this.physics.add.collider(player, platforms);
+    // Not part of Phaser
+    player.inventory = [];
+    player.slamming = false;
   },
   display: function () {
     invText = this.add.text(16, 16, 'Inventory:', {fontSize: '32px', fill: '#000'});
