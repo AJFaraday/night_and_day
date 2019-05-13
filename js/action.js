@@ -2,14 +2,12 @@ action = {
   readCursors: function () {
     if (player.active) {
       cursors = this.input.keyboard.createCursorKeys();
-      if (cursors.left.isDown) {
+      if (cursors.left.isDown && !player.slamming) {
         player.setVelocityX(-160);
-
         player.anims.play('left', true);
       }
-      else if (cursors.right.isDown) {
+      else if (cursors.right.isDown && !player.slamming) {
         player.setVelocityX(160);
-
         player.anims.play('right', true);
       }
       else {
