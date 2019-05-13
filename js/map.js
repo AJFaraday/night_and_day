@@ -52,6 +52,10 @@ map = {
   add_box: function (x, y, data) {
     platforms.create(x, y, 'box');
   },
+  add_breaking_box: function (x, y, data) {
+    var box = platforms.create(x, y, 'breaking_box');
+    box.breaking = true;
+  },
   add_door: function (x, y, data) {
     var sprite = 'door';
     if (typeof data['sprite'] !== 'undefined') {

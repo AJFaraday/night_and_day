@@ -26,8 +26,19 @@ map_data = {
     'P': {method: 'move_player'},
     'R': {method: 'add_door', name: 'R', target: 'D', sprite: 'red_door', required: 'red_key'},
     'D': {method: 'add_door', name: 'D', target: 'R', sprite: 'red_door'},
-    'G': {method: 'add_door', name: 'G', target: '004-something', sprite: 'green_door', required: 'green_key'},
+    'G': {method: 'add_door', name: 'G', target: '004-breaking', sprite: 'green_door', required: 'green_key'},
     'r': {method: 'add_key', door: 'R', sprite: 'red_key', name: 'red_key'},
     'g': {method: 'add_key', door: 'G', sprite: 'green_key', name: 'green_key'}
+  },
+  '004-breaking': {
+    'W': {method: 'add_floor'},
+    '+': {method: 'add_water'},
+    '#': {method: 'add_box'},
+    'B': {method: 'add_breaking_box'}  ,
+    'D': {
+      method: 'add_door',
+      target: '005-something'
+    } ,
+    'P': {method: 'move_player'}
   }
 };

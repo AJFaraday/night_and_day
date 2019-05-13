@@ -1,11 +1,11 @@
-bugs:
-- stuck on bottom of screen (no death event)
-
 features:
-- ground image for bottom of screen
-- death event
-- Level select (accept level param, present list of levels)
+- breakable blocks
+- death event (currently just restart)
 - Dynamic background
+- - Multiple layers (hills with ScrollFactor)
+- - moving clouds
+- - moving sun
+- - Animated water
 - hint messages on screen
 - default map elements (box, door, player etc) - expanded with level specific
 - ledge hanging
