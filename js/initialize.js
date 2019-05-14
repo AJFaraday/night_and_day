@@ -1,55 +1,41 @@
 initialize = {
-  background: function () {
+  background: function() {
     var x = 0;
     do {
       var img = this.add.image(x, 0, 'sky');
       img.setOrigin(0, 0);
       x += 480;
-    } while (x <= game.config.width);
+    } while(x <= game.config.width);
   },
-  platforms: function () {
+  platforms: function() {
     var level = '001-boxes';
     var level_from_url = utils.getQueryVariable('level');
 
-    if (level_from_url) {
+    if(level_from_url) {
       level = level_from_url;
     }
     platforms = this.physics.add.staticGroup();
     map.draw(level);
 
     // add breaking animation
-    var anim = this.anims.create({
+    this.anims.create({
       key: 'break',
       frames: this.anims.generateFrameNumbers('breaking_box', {start: 0, end: 9}),
       frameRate: 20,
       repeat: 0
     });
-
-    this.physics.add.collider(
-      player,
-      platforms,
-      function (player, platform) {
-        if (player.slamming && platform.breaking) {
-          platform.anims.play('break', false);
-          platform.once('animationcomplete', () => {
-            platform.destroy();
-        });
-        }
-      });
   },
-  doors: function () {
+  doors: function() {
     doors = this.physics.add.staticGroup();
-    this.physics.add.overlap(player, doors, interaction.touchDoor, null, this);
   },
-  water: function () {
+  water: function() {
     water = this.physics.add.staticGroup();
-    this.physics.add.overlap(player, water, interaction.touchWater, null, this);
   },
-  keys: function () {
+  keys: function() {
     keys = this.physics.add.staticGroup();
     this.physics.add.overlap(player, keys, interaction.pickUpKey, null, this);
   },
-  player: function () {
+  player: function() {
     var that = this;
     player = this.physics.add.sprite(100, 100, 'dude');
     player.setBounce(0.2);
@@ -75,7 +61,7 @@ initialize = {
     });
     this.anims.create({
       key: 'slam',
-      frames: [{key:'dude', frame: 9}],
+      frames: [{key: 'dude', frame: 9}],
       frameRate: 20
     });
 
@@ -83,32 +69,37 @@ initialize = {
     player.inventory = [];
     player.slamming = false;
   },
-  display: function () {
+  display: function() {
     invText = this.add.text(16, 16, 'Inventory:', {fontSize: '32px', fill: '#000'});
     invText.setScrollFactor(0);
     inventoryImages = []
   },
-  stars: function () {
-    stars = this.physics.add.group({
-      key: 'star',
-      repeat: 19,
-      setXY: {x: 12, y: 0, stepX: game.config.width / 20}
-    });
-
-    stars.children.iterate(function (child) {
-      child.setBounceY(Phaser.Math.FloatBetween(0.8, 1));
-    });
-    this.physics.add.collider(stars, platforms);
-    this.physics.add.overlap(player, stars, interaction.collectStar, null, this);
-  },
-  bombs: function () {
-    bombs = this.physics.add.group();
-    this.physics.add.collider(bombs, platforms);
-    this.physics.add.collider(player, bombs, interaction.hitBomb, null, this);
-  },
-  camera: function () {
-    this.cameras.main.setViewport(0, 0, 1000, 800);
-    this.cameras.main.startFollow(player);
+  camera: function() {
+    this.cameras.main.setViewport(0, 0, 800, 600);
     this.cameras.main.setBounds(0, 0, game.config.width, game.config.height);
+  },
+  interactions: function() {
+    this.physics.add.collider(
+      player,
+      platforms,
+      function(player, platform) {
+        if(player.slamming) {
+          player.slamming = false;
+          if(platform.breaking) {
+            platform.anims.play('break', false);
+            platform.once(
+              'animationcomplete',
+              function() {
+                platform.destroy();
+              }
+            );
+          }
+        }
+      }
+    );
+    this.physics.add.overlap(player, doors, interaction.touchDoor, null, this);
+    this.physics.add.overlap(player, water, interaction.touchWater, null, this);
+    this.cameras.main.startFollow(player);
   }
-};
+}
+;

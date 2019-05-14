@@ -6,7 +6,7 @@ map = {
     }
     if (typeof inventoryImages !== 'undefined') {
       for (i in inventoryImages) {
-        console.log(inventoryImages[i].destroy());
+        inventoryImages[i].destroy();
       }
       inventoryImages = [];
     }
@@ -20,7 +20,9 @@ map = {
       doors.clear(true, true);
       water.clear(true, true);
       keys.clear(true, true);
-      var data = map_data[name];
+      var data = {};
+      Object.assign(data, map_data['default']);
+      Object.assign(data, map_data[name]);
       var shape = xml_req.responseText;
       var rows = shape.split("\n");
       for (var y = 0; y < height_in_blocks; y++) {
