@@ -43,7 +43,6 @@ interaction = {
       player.inventory.push(key.name);
       var x = 180 + (player.inventory.length * 48);
       var y = 32;
-      console.log(key.sprite);
       var inventoryDisplay = this.add.image(x, y, key.sprite);
       inventoryDisplay.setScrollFactor(0);
       inventoryImages.push(inventoryDisplay);

@@ -1,7 +1,7 @@
 action = {
   readCursors: function () {
     if (player.active) {
-      cursors = this.input.keyboard.createCursorKeys();
+
       if (cursors.left.isDown && !player.slamming) {
         player.setVelocityX(-160);
         player.anims.play('left', true);
@@ -20,14 +20,11 @@ action = {
       if (Phaser.Input.Keyboard.JustDown(cursors.down)) {
         if (typeof player.latestDoor !== 'undefined' && utils.checkOverlap(player, player.latestDoor)) {
           if (player.latestDoor.target && player.latestDoor.target.includes('-')) {
-            console.log('leave this level!');
             map.draw(player.latestDoor.target);
           } else if (player.latestDoor.target) {
-            console.log('trying jump');
             var target_door = doors.children.entries.find(function (d) {
               return d.name == player.latestDoor.target
             });
-            console.log(target_door);
             if (typeof(target_door) !== 'undefined') {
               player.setPosition(target_door.x, target_door.y);
             }
@@ -41,14 +38,11 @@ action = {
       if (Phaser.Input.Keyboard.JustDown(reset_key) && map.current) {
         map.restart();
       }
-    }
-    if (cursors.down.isDown && !player.body.blocked.down && !player.slamming) {
-      player.anims.play('slam', true);
-      player.slamming = true;
-      player.setVelocityY(400);
-    }
-    if (player.body.touching.down) {
-      player.slamming = false;
+      if (cursors.down.isDown && !player.body.blocked.down && !player.slamming) {
+        player.anims.play('slam', true);
+        player.slamming = true;
+        player.setVelocityY(400);
+      }
     }
   }
 }
