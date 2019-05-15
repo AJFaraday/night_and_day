@@ -2,11 +2,17 @@
 <html>
   <head>
     <title>Game Name Here</title>
-    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/map_data.js"></script>
+    <style>
+      h1 {
+        padding: 0px;
+        margin: 0px;
+      }
+    </style>
   </head>
   <body>
     <h1>Game Name Here</h1>
-     <iframe src="game.html" height="768px" width="1000px"></iframe>
+     <iframe src="game.html" height="600px" width="800px"></iframe>
     <p>
       This game, as yet unnamed, is a personal project by <a href="twitter.com/MarmiteJunction">Andrew Faraday</a>
       and is presented as-is. It is unfinished and may never be finished.
@@ -15,12 +21,7 @@
     <ul id="level_list"></ul>
 
     <script type="text/javascript">
-      var levels = [
-        '001-boxes',
-        '002-doors',
-        '003-keys',
-        '004-breaking'
-      ];
+      var levels = Object.keys(map_data);
       levels.forEach(function(level) {
         var node = document.createElement('LI');
         var link = document.createElement('A');

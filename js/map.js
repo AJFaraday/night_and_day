@@ -6,7 +6,7 @@ map = {
     }
     if (typeof inventoryImages !== 'undefined') {
       for (i in inventoryImages) {
-        console.log(inventoryImages[i].destroy());
+        inventoryImages[i].destroy();
       }
       inventoryImages = [];
     }
@@ -20,7 +20,10 @@ map = {
       doors.clear(true, true);
       water.clear(true, true);
       keys.clear(true, true);
-      var data = map_data[name];
+      springs.clear(true, true)
+      var data = {};
+      Object.assign(data, map_data['default']);
+      Object.assign(data, map_data[name]);
       var shape = xml_req.responseText;
       var rows = shape.split("\n");
       for (var y = 0; y < height_in_blocks; y++) {
@@ -29,7 +32,9 @@ map = {
           var space = data[row.charAt(x)];
           if (space) {
             var xpos = x * block_size + (block_size / 2);
+            if (space.offsetX) { xpos += block_size * space.offsetX }
             var ypos = y * block_size + (block_size / 2);
+            if (space.offsetY) { ypos += block_size * space.offsetY }
             map[space.method](xpos, ypos, space);
           }
         }
@@ -51,6 +56,12 @@ map = {
   },
   add_box: function (x, y, data) {
     platforms.create(x, y, 'box');
+  },
+  add_spring: function (x, y, data) {
+    var spring = springs.create(x, y, 'spring');
+    spring.body.checkCollision.left = false;
+    spring.body.checkCollision.right = false;
+
   },
   add_breaking_box: function (x, y, data) {
     var box = platforms.create(x, y, 'breaking_box');

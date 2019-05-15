@@ -43,10 +43,28 @@ interaction = {
       player.inventory.push(key.name);
       var x = 180 + (player.inventory.length * 48);
       var y = 32;
-      console.log(key.sprite);
       var inventoryDisplay = this.add.image(x, y, key.sprite);
       inventoryDisplay.setScrollFactor(0);
       inventoryImages.push(inventoryDisplay);
+    }
+  },
+  breakPlatform: function (player, platform) {
+    if (player.slamming) {
+      player.slamming = false;
+      if (platform.breaking) {
+        platform.anims.play('break', false);
+        platform.once(
+          'animationcomplete',
+          function () {
+            platform.destroy();
+          }
+        );
+      }
+    }
+  }, bounceOnSpring: function (player, spring) {
+    player.slamming = false;
+    if (player.body.velocity.y < -10) {
+      player.setVelocityY(Math.abs(player.body.velocity.y * 5) * -1);
     }
   }
 
