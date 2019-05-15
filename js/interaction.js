@@ -47,6 +47,25 @@ interaction = {
       inventoryDisplay.setScrollFactor(0);
       inventoryImages.push(inventoryDisplay);
     }
+  },
+  breakPlatform: function (player, platform) {
+    if (player.slamming) {
+      player.slamming = false;
+      if (platform.breaking) {
+        platform.anims.play('break', false);
+        platform.once(
+          'animationcomplete',
+          function () {
+            platform.destroy();
+          }
+        );
+      }
+    }
+  }, bounceOnSpring: function (player, spring) {
+    player.slamming = false;
+    if (player.body.velocity.y < -10) {
+      player.setVelocityY(Math.abs(player.body.velocity.y * 5) * -1);
+    }
   }
 
 };

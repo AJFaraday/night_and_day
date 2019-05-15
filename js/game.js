@@ -40,8 +40,10 @@ function preload() {
     door: 'assets/mine/door.png',
     red_door: 'assets/mine/red_door.png',
     green_door: 'assets/mine/green_door.png',
+    brown_key: 'assets/mine/brown_key.png',
     red_key: 'assets/mine/red_key.png',
-    green_key: 'assets/mine/green_key.png'
+    green_key: 'assets/mine/green_key.png',
+    spring: 'assets/mine/spring.png'
   });
   this.load.spritesheet('dude',
     prefix + 'assets/mine/dude.png',
@@ -64,6 +66,7 @@ function create() {
   initialize.water.call(this);
   initialize.keys.call(this);
   initialize.display.call(this);
+  initialize.springs.call(this);
 
   initialize.interactions.call(this);
 }

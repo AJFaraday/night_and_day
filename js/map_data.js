@@ -4,7 +4,8 @@ map_data = {
     '+': {method: 'add_water'},
     '#': {method: 'add_box'},
     'P': {method: 'move_player'},
-    'B': {method: 'add_breaking_box'}
+    'B': {method: 'add_breaking_box'},
+    'S': {method: 'add_spring'}
   },
   '001-boxes': {
     'D': {
@@ -30,5 +31,20 @@ map_data = {
       method: 'add_door',
       target: '005-maze'
     }
+  },
+  '005-maze': {
+    'O': {
+      method: 'add_box',
+      offsetY: 0.5
+    },
+    'r': {method: 'add_key', door: 'R', sprite: 'red_key', name: 'red_key'},
+    'R': {method: 'add_door', name: 'R', sprite: 'red_door', required: 'red_key'},
+
+    'g': {method: 'add_key', sprite: 'green_key', name: 'green_key'},
+    'G': {method: 'add_door', name: 'G', target: 'H', sprite: 'green_door', required: 'green_key'},
+    'H': {method: 'add_door', name: 'H', target: 'G', sprite: 'green_door', required: 'green_key'},
+
+    'b': {method: 'add_key', sprite: 'brown_key', name: 'brown_key'},
+    'D': {method: 'add_door', name: 'D', target: '001-boxes', required: 'brown_key'}
   }
 };

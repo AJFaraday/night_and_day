@@ -1,5 +1,8 @@
 features:
-- breakable blocks
+- Moving blocks
+- Levers
+- - start/stop block movement
+- - make one-off movement
 - death event (currently just restart)
 - Dynamic background
 - - Multiple layers (hills with ScrollFactor)
@@ -7,10 +10,18 @@ features:
 - - moving sun
 - - Animated water
 - hint messages on screen
-- default map elements (box, door, player etc) - expanded with level specific
 - ledge hanging
-- "butt slam" - R. Burgess
 
+Longer term:
+- night and day
+- - New paper-themed tileset, character etc.
+- - load both tilesets and method to get asset by tileset
+- - A way to define multiple zones (possibly second map file)
+- - - Choose tileset based on zone
+- - - Build background based on zone (much harder)
+- - second player
+- - - key mappings
+- - - actions
 
 notes:
 
@@ -19,3 +30,5 @@ player.active = false;
 this.time.delayedCall(500, function () {
   player.active = true;
 });
+
+
