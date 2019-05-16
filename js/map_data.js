@@ -38,7 +38,8 @@ map_data = {
       offsetY: 0.5
     },
     'r': {method: 'add_key', door: 'R', sprite: 'red_key', name: 'red_key'},
-    'R': {method: 'add_door', name: 'R', sprite: 'red_door', required: 'red_key'},
+    'R': {method: 'add_door', name: 'R', sprite: 'red_door', required: 'red_key', target: 'T'},
+    'T': {method: 'add_door', name: 'T', sprite: 'red_door', required: 'red_key', target: 'R'},
 
     'g': {method: 'add_key', sprite: 'green_key', name: 'green_key'},
     'G': {method: 'add_door', name: 'G', target: 'H', sprite: 'green_door', required: 'green_key'},

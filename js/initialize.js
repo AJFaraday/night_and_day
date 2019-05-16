@@ -82,7 +82,7 @@ initialize = {
     this.cameras.main.setBounds(0, 0, game.config.width, game.config.height);
   },
   interactions: function () {
-    this.physics.add.collider(player, platforms, interaction.breakPlatform, null, this);
+    this.physics.add.collider(player, platforms, interaction.landOnPlatform, null, this);
     this.physics.add.overlap(player, doors, interaction.touchDoor, null, this);
     this.physics.add.overlap(player, water, interaction.touchWater, null, this);
     this.physics.add.collider(player, springs, interaction.bounceOnSpring, null, this);
