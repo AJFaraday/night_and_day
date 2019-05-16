@@ -33,9 +33,12 @@ function preload() {
     star: 'assets/star.png',
     bomb: 'assets/bomb.png',
 
+    sky: 'assets/mine/sky.png',
+    hills: 'assets/mine/hills.png',
+    cloud: 'assets/mine/cloud.png',
+
     water: 'assets/mine/water.png',
     floor: 'assets/mine/ground.png',
-    sky: 'assets/mine/background.png',
     box: 'assets/mine/box.png',
     door: 'assets/mine/door.png',
     red_door: 'assets/mine/red_door.png',
