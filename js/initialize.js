@@ -1,11 +1,41 @@
 initialize = {
-  background: function () {
+  drawSky: function () {
     var x = 0;
     do {
       var img = this.add.image(x, 0, 'sky');
       img.setOrigin(0, 0);
       x += 480;
     } while (x <= game.config.width);
+  },
+  drawHills: function () {
+    var x = 0;
+    do {
+      var img = this.add.image(x, game.config.height, 'hills');
+      img.setOrigin(0, 1);
+      img.setScrollFactor(0.7, 1);
+      x += 800;
+    } while (x <= game.config.width);
+  },
+  drawClouds: function() {
+    var numClouds = 20;
+    var minSize = 0.2;
+    var maxSize = 2;
+    var generator = new Phaser.Math.RandomDataGenerator(
+      [(new Date).getMilliseconds()]);
+    for(var i = 0; i < numClouds; i++) {
+      var size = (generator.between(1,100) / 100);
+      var x = generator.between(0, game.config.width);
+      var y = generator.between(0, game.config.height);
+      var img = this.add.image(x, y, 'cloud');
+      img.setScrollFactor((generator.between(20, 100) / 100), 1);
+      img.setScale(size);
+      
+    }
+  },
+  background: function () {
+    initialize.drawSky.call(this);
+    initialize.drawClouds.call(this);
+    initialize.drawHills.call(this);
   },
   platforms: function () {
     var level = '001-boxes';
