@@ -4,11 +4,7 @@ features:
 - - start/stop block movement
 - - make one-off movement
 - death event (currently just restart)
-- Dynamic background
-- - Multiple layers (hills with ScrollFactor)
-- - moving clouds
-- - moving sun
-- - Animated water
+- Animated water
 - hint messages on screen
 - ledge hanging
 
