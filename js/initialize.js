@@ -12,25 +12,34 @@ initialize = {
     do {
       var img = this.add.image(x, game.config.height, 'hills');
       img.setOrigin(0, 1);
-      img.setScrollFactor(0.7, 1);
+      img.setScrollFactor(0.7, 1.1);
       x += 800;
     } while (x <= game.config.width);
   },
   drawClouds: function() {
+    clouds = [];
     var numClouds = 20;
-    var minSize = 0.2;
-    var maxSize = 2;
-    var generator = new Phaser.Math.RandomDataGenerator(
-      [(new Date).getMilliseconds()]);
     for(var i = 0; i < numClouds; i++) {
-      var size = (generator.between(1,100) / 100);
-      var x = generator.between(0, game.config.width);
-      var y = generator.between(0, game.config.height);
-      var img = this.add.image(x, y, 'cloud');
-      img.setScrollFactor((generator.between(20, 100) / 100), 1);
-      img.setScale(size);
-      
+      var img = this.add.image(0, 0, 'cloud');
+      img.setOrigin(0, 0);
+      clouds.push(img);
     }
+  },
+  moveClouds: function() {
+    console.log('moveClouds')
+    var generator = new Phaser.Math.RandomDataGenerator([map.current]);
+    clouds.forEach(function(cloud){
+      var size = (generator.between(1,100) / 100);
+      var x = generator.between(0, 1400);
+      var y = generator.between(0, 420);
+      cloud.setX(x);
+      cloud.setY(y);
+      cloud.setScrollFactor(
+        (generator.between(20, 100) / 100),
+        (generator.between(100, 130) / 100)
+      );
+      cloud.setScale(size);
+    });
   },
   background: function () {
     initialize.drawSky.call(this);
@@ -66,8 +75,12 @@ initialize = {
   },
   keys: function () {
     keys = this.physics.add.staticGroup();
-    this.physics.add.overlap(player, keys, interaction.pickUpKey, null, this);
   },
+  sliders: function() {
+    sliders = this.physics.add.staticGroup();
+    slider_tracks = this.physics.add.staticGroup();
+  },
+
   player: function () {
     var that = this;
     player = this.physics.add.sprite(100, 100, 'dude');
@@ -116,6 +129,8 @@ initialize = {
     this.physics.add.overlap(player, doors, interaction.touchDoor, null, this);
     this.physics.add.overlap(player, water, interaction.touchWater, null, this);
     this.physics.add.collider(player, springs, interaction.bounceOnSpring, null, this);
+    this.physics.add.overlap(player, keys, interaction.pickUpKey, null, this);
+    this.physics.add.collider(player, sliders, interaction.hitSlider);
 
     this.cameras.main.startFollow(player);
   }

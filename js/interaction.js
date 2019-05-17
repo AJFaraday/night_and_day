@@ -1,29 +1,4 @@
 interaction = {
-  collectStar: function (player, star) {
-    star.disableBody(true, true);
-    score += 10;
-    scoreText.setText('Score: ' + score);
-
-    if (stars.countActive(true) === 0) {
-      stars.children.iterate(function (child) {
-        child.enableBody(true, child.x, 0, true, true);
-      });
-
-      var half_way = (game.config.width / 2);
-      var x = (player.x < (half_way)) ? Phaser.Math.Between(half_way, game.config.width) : Phaser.Math.Between(0, half_way);
-
-      var bomb = bombs.create(x, 16, 'bomb');
-      bomb.setBounce(1);
-      bomb.setCollideWorldBounds(true);
-      bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
-    }
-  },
-  hitBomb: function (player, bomb) {
-    this.physics.pause();
-    player.setTint(0xff0000);
-    player.anims.play('turn');
-    gameOver = true;
-  },
   touchDoor: function (player, door) {
     if (typeof(door.required) == 'undefined') {
       player.latestDoor = door;
@@ -74,6 +49,19 @@ interaction = {
         player.setVelocityY(Math.abs(player.body.velocity.y * 5) * -1);
       }
     }
+  },
+  hitSlider: function (player, slider) {
+    //TODO only follow tracks
+    if (slider.direction == 'vertical') {
+      if (player.body.onFloor() && player.slamming) {
+        slider.setY(slider.y + block_size);
+        slider.body.position.y = (slider.y - (block_size / 2));
+      } else if (player.body.onCeiling()) {
+        slider.setY(slider.y - block_size);
+        slider.body.position.y = (slider.y - (block_size / 2));
+      }
+    }
+    player.slamming = false;
   }
 
 };
