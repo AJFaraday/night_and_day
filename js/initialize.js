@@ -26,7 +26,6 @@ initialize = {
     }
   },
   moveClouds: function() {
-    console.log('moveClouds')
     var generator = new Phaser.Math.RandomDataGenerator([map.current]);
     clouds.forEach(function(cloud){
       var size = (generator.between(1,100) / 100);

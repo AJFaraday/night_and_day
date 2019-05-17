@@ -32,7 +32,6 @@ interaction = {
     }
   },
   breakPlatform: function (player, platform) {
-    console.log('breakPlatform')
     if (player.slamming || player.body.onCeiling()) {
       platform.anims.play('break', false);
       platform.once(
