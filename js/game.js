@@ -29,31 +29,32 @@ function preload() {
   game_pointer = this;
 
   utils.load_images.call(this, {
-    ground: 'assets/platform.png',
-    star: 'assets/star.png',
-    bomb: 'assets/bomb.png',
+    sky: 'assets/images/sky.png',
+    hills: 'assets/images/hills.png',
+    cloud: 'assets/images/cloud.png',
 
-    sky: 'assets/mine/sky.png',
-    hills: 'assets/mine/hills.png',
-    cloud: 'assets/mine/cloud.png',
+    water: 'assets/images/water.png',
+    floor: 'assets/images/ground.png',
+    box: 'assets/images/box.png',
+    door: 'assets/images/door.png',
+    red_door: 'assets/images/red_door.png',
+    green_door: 'assets/images/green_door.png',
+    brown_key: 'assets/images/brown_key.png',
+    red_key: 'assets/images/red_key.png',
+    green_key: 'assets/images/green_key.png',
+    spring: 'assets/images/spring.png',
 
-    water: 'assets/mine/water.png',
-    floor: 'assets/mine/ground.png',
-    box: 'assets/mine/box.png',
-    door: 'assets/mine/door.png',
-    red_door: 'assets/mine/red_door.png',
-    green_door: 'assets/mine/green_door.png',
-    brown_key: 'assets/mine/brown_key.png',
-    red_key: 'assets/mine/red_key.png',
-    green_key: 'assets/mine/green_key.png',
-    spring: 'assets/mine/spring.png'
+    horizontal_slider: 'assets/images/horizontal_slider.png',
+    horizontal_track: 'assets/images/horizontal_track.png',
+    vertical_slider: 'assets/images/vertical_slider.png',
+    vertical_track: 'assets/images/vertical_track.png'
   });
   this.load.spritesheet('dude',
-    prefix + 'assets/mine/dude.png',
+    prefix + 'assets/images/dude.png',
     {frameWidth: 32, frameHeight: 48}
   );
   this.load.spritesheet('breaking_box',
-    prefix + 'assets/mine/breaking_box.png',
+    prefix + 'assets/images/breaking_box.png',
     {frameWidth: 48, frameHeight: 48}
   );
 }
@@ -70,6 +71,8 @@ function create() {
   initialize.keys.call(this);
   initialize.display.call(this);
   initialize.springs.call(this);
+  initialize.sliders.call(this);
+
 
   initialize.interactions.call(this);
 }

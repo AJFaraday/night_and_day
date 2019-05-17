@@ -20,7 +20,7 @@ map = {
       doors.clear(true, true);
       water.clear(true, true);
       keys.clear(true, true);
-      springs.clear(true, true)
+      springs.clear(true, true);
       var data = {};
       Object.assign(data, map_data['default']);
       Object.assign(data, map_data[name]);
@@ -32,18 +32,23 @@ map = {
           var space = data[row.charAt(x)];
           if (space) {
             var xpos = x * block_size + (block_size / 2);
-            if (space.offsetX) { xpos += block_size * space.offsetX }
+            if (space.offsetX) {
+              xpos += block_size * space.offsetX
+            }
             var ypos = y * block_size + (block_size / 2);
-            if (space.offsetY) { ypos += block_size * space.offsetY }
+            if (space.offsetY) {
+              ypos += block_size * space.offsetY
+            }
             map[space.method](xpos, ypos, space);
           }
         }
       }
+      initialize.moveClouds();
     };
     xml_req.send();
   },
   restart: function () {
-    map.draw(map.current);
+    map.draw.call(this, map.current);
   },
 
   // Actions referred to in map_data
@@ -57,11 +62,20 @@ map = {
   add_box: function (x, y, data) {
     platforms.create(x, y, 'box');
   },
+  add_slider: function (x, y, data) {
+    map.add_slider_track(x, y, data);
+    var slider = sliders.create(x, y, data.direction + '_slider');
+    for (var key in data) {
+      slider[key] = data[key];
+    }
+  },
+  add_slider_track: function (x, y, data) {
+    slider_tracks.create(x, y, data.direction + '_track');
+  },
   add_spring: function (x, y, data) {
     var spring = springs.create(x, y, 'spring');
     spring.body.checkCollision.left = false;
     spring.body.checkCollision.right = false;
-
   },
   add_breaking_box: function (x, y, data) {
     var box = platforms.create(x, y, 'breaking_box');

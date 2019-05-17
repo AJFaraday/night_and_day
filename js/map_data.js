@@ -47,5 +47,9 @@ map_data = {
 
     'b': {method: 'add_key', sprite: 'brown_key', name: 'brown_key'},
     'D': {method: 'add_door', name: 'D', target: '001-boxes', required: 'brown_key'}
+  },
+  '006-sliders': {
+    'S': {method: 'add_slider', direction: 'vertical'},
+    '|': {method: 'add_slider_track', direction: 'vertical'}
   }
 };
