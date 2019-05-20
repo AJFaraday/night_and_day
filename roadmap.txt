@@ -8,9 +8,7 @@ features:
 - Animated water
 - hint messages on screen
 - ledge hanging
-- audio (when audio is made)
 - camera shake on slam impact
-
 
 Longer term:
 - night and day

@@ -126,7 +126,7 @@ initialize = {
   interactions: function () {
     this.physics.add.collider(player, platforms, interaction.landOnPlatform, null, this);
     this.physics.add.overlap(player, doors, interaction.touchDoor, null, this);
-    this.physics.add.overlap(player, water, interaction.touchWater, null, this);
+    this.physics.add.overlap(player, water, interaction.killPlayer, null, this);
     this.physics.add.collider(player, springs, interaction.bounceOnSpring, null, this);
     this.physics.add.overlap(player, keys, interaction.pickUpKey, null, this);
     this.physics.add.collider(player, sliders, interaction.hitSlider);

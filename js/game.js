@@ -28,6 +28,8 @@ game.restarting = false;
 function preload() {
   game_pointer = this;
 
+  audio.load.call(this);
+
   utils.load_images.call(this, {
     sky: 'assets/images/sky.png',
     hills: 'assets/images/hills.png',
@@ -75,6 +77,7 @@ function create() {
 
 
   initialize.interactions.call(this);
+  audio.play_theme();
 }
 
 function update() {
