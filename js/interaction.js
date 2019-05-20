@@ -42,15 +42,21 @@ interaction = {
       player.slamming = false;
     }
     if (player.jumping) {
-      audio.play_land();
       if (player.body.onFloor()) {
+        audio.play_land();
         player.jumping = false;
+      } else if (player.body.onCeiling()) {
+        audio.play_sfx('head_block')
       }
     }
   },
   breakPlatform: function (player, platform) {
-    if (player.slamming || player.body.onCeiling()) {
+    if (player.slamming || player.body.onCeiling() && !platform.breaking_right_now) {
       platform.anims.play('break', false);
+
+      audio.play_sfx('break');
+      platform.breaking_right_now = true;
+
       platform.once(
         'animationcomplete',
         function () {
@@ -61,10 +67,10 @@ interaction = {
   },
   bounceOnSpring: function (player, spring) {
     player.slamming = false;
-    if (player.body.onFloor()) {
-      if (player.body.velocity.y < -10) {
-        player.setVelocityY(Math.abs(player.body.velocity.y * 5) * -1);
-      }
+
+    if (player.body.onFloor() && player.body.velocity.y < -10) {
+      audio.play_sfx('spring');
+      player.setVelocityY(Math.abs(player.body.velocity.y * 5) * -1);
     }
   },
   hitSlider: function (player, slider) {
