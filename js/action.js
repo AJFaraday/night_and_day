@@ -12,13 +12,18 @@ action = {
     if (!player.slamming) {
       player.anims.play('turn');
     }
-  }, slam: function () {
+  },
+  slam: function () {
     player.anims.play('slam', true);
     player.slamming = true;
     player.setVelocityY(400);
   },
   jump: function () {
-    player.setVelocityY((game.config.physics.arcade.gravity.y * -1) * 0.5);
+    if (player.body.onFloor()) {
+      player.jumping = true;
+      audio.play_sfx('jump');
+      player.setVelocityY((game.config.physics.arcade.gravity.y * -1) * 0.5);
+    }
   },
   jumpToLevel: function (level) {
     map.draw(level);
@@ -33,6 +38,7 @@ action = {
   },
   enterDoor: function () {
     if (typeof player.latestDoor !== 'undefined' && utils.checkOverlap(player, player.latestDoor)) {
+      audio.play_sfx('door');
       if (player.latestDoor.target && player.latestDoor.target.includes('-')) {
         action.jumpToLevel(player.latestDoor.target);
       } else if (player.latestDoor.target) {

@@ -8,8 +8,18 @@ interaction = {
       }
     }
   },
-  touchWater: function (player, water) {
+  killPlayer: function (player, killer) {
+    player.active = false;
+    audio.play_die();
     map.restart();
+    setTimeout(
+      interaction.resumeGame,
+      4000
+  )
+  },
+  resumeGame: function () {
+    player.active = true;
+    audio.resume_theme();
   },
   pickUpKey: function (player, key) {
     if (typeof key.collected == 'undefined') {
@@ -21,6 +31,7 @@ interaction = {
       var inventoryDisplay = this.add.image(x, y, key.sprite);
       inventoryDisplay.setScrollFactor(0);
       inventoryImages.push(inventoryDisplay);
+      audio.play_sfx('pick_up')
     }
   },
   landOnPlatform: function (player, platform) {
@@ -29,6 +40,12 @@ interaction = {
     }
     if (player.slamming) {
       player.slamming = false;
+    }
+    if (player.jumping) {
+      audio.play_land();
+      if (player.body.onFloor()) {
+        player.jumping = false;
+      }
     }
   },
   breakPlatform: function (player, platform) {
@@ -41,7 +58,8 @@ interaction = {
         }
       );
     }
-  }, bounceOnSpring: function (player, spring) {
+  },
+  bounceOnSpring: function (player, spring) {
     player.slamming = false;
     if (player.body.onFloor()) {
       if (player.body.velocity.y < -10) {
