@@ -4,6 +4,9 @@ audio = {
     die: 'assets/audio/sfx/die.ogg',
     door: 'assets/audio/sfx/door.ogg',
     jump: 'assets/audio/sfx/jump.ogg',
+    break: 'assets/audio/sfx/break.ogg',
+    spring: 'assets/audio/sfx/spring.ogg',
+    head_block: 'assets/audio/sfx/head_block.ogg',
     land: 'assets/audio/sfx/land.ogg',
     pick_up: 'assets/audio/sfx/pick_up.ogg'
   },
