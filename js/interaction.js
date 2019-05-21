@@ -35,7 +35,7 @@ interaction = {
     }
   },
   landOnPlatform: function (player, platform) {
-    if (platform.breaking) {
+    if (platform.breakable) {
       interaction.breakPlatform(player, platform);
     }
     if (player.slamming) {

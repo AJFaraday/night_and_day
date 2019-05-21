@@ -58,7 +58,7 @@ initialize = {
     // add breaking animation
     this.anims.create({
       key: 'break',
-      frames: this.anims.generateFrameNumbers('breaking_box', {start: 0, end: 9}),
+      frames: this.anims.generateFrameNumbers('breakable_box', {start: 0, end: 9}),
       frameRate: 20,
       repeat: 0
     });

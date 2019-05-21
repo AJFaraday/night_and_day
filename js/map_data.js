@@ -4,7 +4,7 @@ map_data = {
     '+': {method: 'add_water'},
     '#': {method: 'add_box'},
     'P': {method: 'move_player'},
-    'B': {method: 'add_breaking_box'},
+    'B': {method: 'add_breakable_box'},
     'S': {method: 'add_spring'}
   },
   '001-boxes': {

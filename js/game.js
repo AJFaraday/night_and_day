@@ -55,8 +55,8 @@ function preload() {
     prefix + 'assets/images/dude.png',
     {frameWidth: 32, frameHeight: 48}
   );
-  this.load.spritesheet('breaking_box',
-    prefix + 'assets/images/breaking_box.png',
+  this.load.spritesheet('breakable_box',
+    prefix + 'assets/images/breakable_box.png',
     {frameWidth: 48, frameHeight: 48}
   );
 }
