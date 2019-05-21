@@ -80,7 +80,7 @@ map = {
   add_breakable_box: function (x, y, data) {
     var box = platforms.create(x, y, 'breakable_box');
     box.breakable = true;
-    box.breaking_right_now = false;
+    box.breaking = false;
   },
   add_door: function (x, y, data) {
     var sprite = 'door';

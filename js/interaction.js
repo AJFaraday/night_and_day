@@ -51,11 +51,11 @@ interaction = {
     }
   },
   breakPlatform: function (player, platform) {
-    if (player.slamming || player.body.onCeiling() && !platform.breaking_right_now) {
+    if (player.slamming || player.body.onCeiling() && !platform.breaking) {
       platform.anims.play('break', false);
 
       audio.play_sfx('break');
-      platform.breaking_right_now = true;
+      platform.breaking = true;
 
       platform.once(
         'animationcomplete',
