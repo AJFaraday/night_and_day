@@ -50,6 +50,8 @@ map_data = {
   },
   '006-sliders': {
     'S': {method: 'add_slider', direction: 'vertical'},
-    '|': {method: 'add_slider_track', direction: 'vertical'}
+    '|': {method: 'add_slider_track', direction: 'vertical'},
+    '-': {method: 'add_slider_track', direction: 'horizontal'},
+    'H': {method: 'add_slider', direction: 'horizontal'}
   }
 };

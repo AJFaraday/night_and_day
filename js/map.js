@@ -21,6 +21,8 @@ map = {
       water.clear(true, true);
       keys.clear(true, true);
       springs.clear(true, true);
+      sliders.clear(true,true);
+      slider_tracks.clear(true,true);
       var data = {};
       Object.assign(data, map_data['default']);
       Object.assign(data, map_data[name]);
@@ -70,7 +72,10 @@ map = {
     }
   },
   add_slider_track: function (x, y, data) {
-    slider_tracks.create(x, y, data.direction + '_track');
+    var track = slider_tracks.create(x, y, data.direction + '_track');
+    for (var key in data) {
+      track[key] = data[key];
+    }
   },
   add_spring: function (x, y, data) {
     var spring = springs.create(x, y, 'spring');

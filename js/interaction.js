@@ -15,7 +15,7 @@ interaction = {
     setTimeout(
       interaction.resumeGame,
       4000
-  )
+    )
   },
   resumeGame: function () {
     player.active = true;
@@ -74,17 +74,23 @@ interaction = {
     }
   },
   hitSlider: function (player, slider) {
-    //TODO only follow tracks
     if (slider.direction == 'vertical') {
       if (player.body.onFloor() && player.slamming) {
-        slider.setY(slider.y + block_size);
-        slider.body.position.y = (slider.y - (block_size / 2));
+        slider_actions.moveSliderDown(slider)
       } else if (player.body.onCeiling()) {
-        slider.setY(slider.y - block_size);
-        slider.body.position.y = (slider.y - (block_size / 2));
+        slider_actions.moveSliderUp(slider);
+      }
+    } else if (slider.direction == 'horizontal') {
+      if (player.body.touching.left) {
+        slider_actions.moveSliderLeft(slider)
+      } else if (player.body.touching.right) {
+        slider_actions.moveSliderRight(slider);
       }
     }
     player.slamming = false;
   }
 
-};
+
+}
+
+;
