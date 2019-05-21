@@ -1,6 +1,6 @@
 features:
 - Moving blocks
-- - sliders (perhaps one controlling volume)
+- - sliders (perhaps settings screenwhere they control volume)
 - Levers
 - - start/stop block movement
 - - make one-off movement
@@ -9,6 +9,7 @@ features:
 - hint messages on screen
 - ledge hanging
 - camera shake on slam impact
+- multiple campaigns?
 
 Longer term:
 - night and day

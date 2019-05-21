@@ -19,5 +19,5 @@ clean:
 
 $(OGGS) : $(WAVS)
 
-%.ogg: %.wav
+%.ogg: $(ND_SOURCE_WAVS)/%.wav
 	ffmpeg -v warning -y -channel_layout mono -i $< -acodec libvorbis -qscale:a $(QSCALE) $@
