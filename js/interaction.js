@@ -40,6 +40,7 @@ interaction = {
     }
     if (player.slamming) {
       player.slamming = false;
+      action.shakeCamera();
     }
     if (player.jumping) {
       if (player.body.onFloor()) {

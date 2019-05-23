@@ -120,6 +120,7 @@ initialize = {
     inventoryImages = []
   },
   camera: function () {
+    camera = this.cameras.main;
     this.cameras.main.setViewport(0, 0, 800, 600);
     this.cameras.main.setBounds(0, 0, game.config.width, game.config.height);
   },

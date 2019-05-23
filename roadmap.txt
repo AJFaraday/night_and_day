@@ -1,14 +1,14 @@
 features:
-- Moving blocks
-- - sliders (perhaps settings screenwhere they control volume)
+- Home screen
+- - Title text
+- - volume slider(s)
+- - Door (s) to Level(s)
 - Levers
 - - start/stop block movement
 - - make one-off movement
-- death event (currently just restart)
 - Animated water
 - hint messages on screen
 - ledge hanging
-- camera shake on slam impact
 - multiple campaigns?
 
 Longer term:
