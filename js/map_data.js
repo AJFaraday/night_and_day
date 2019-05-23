@@ -46,12 +46,21 @@ map_data = {
     'H': {method: 'add_door', name: 'H', target: 'G', sprite: 'green_door', required: 'green_key'},
 
     'b': {method: 'add_key', sprite: 'brown_key', name: 'brown_key'},
-    'D': {method: 'add_door', name: 'D', target: '001-boxes', required: 'brown_key'}
+    'D': {method: 'add_door', name: 'D', target: '006-sliders', required: 'brown_key'}
   },
   '006-sliders': {
     'S': {method: 'add_slider', direction: 'vertical'},
     '|': {method: 'add_slider_track', direction: 'vertical'},
     '-': {method: 'add_slider_track', direction: 'horizontal'},
-    'H': {method: 'add_slider', direction: 'horizontal'}
+    'H': {method: 'add_slider', direction: 'horizontal'},
+    'D': {method: 'add_door', name: 'D', target: '001-boxes'},
+
+    'r': {method: 'add_key', door: 'R', sprite: 'red_key', name: 'red_key'},
+    'R': {method: 'add_door', name: 'R', sprite: 'red_door', required: 'red_key', target: 'T'},
+    'T': {method: 'add_door', name: 'T', sprite: 'red_door', required: 'red_key', target: 'R'},
+
+    'g': {method: 'add_key', sprite: 'green_key', name: 'green_key'},
+    'G': {method: 'add_door', name: 'G', target: 'H', sprite: 'green_door', required: 'green_key'},
+    'F': {method: 'add_door', name: 'H', target: 'G', sprite: 'green_door', required: 'green_key'}
   }
 };

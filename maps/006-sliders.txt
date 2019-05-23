@@ -1,17 +1,17 @@
-                                         |
-       P                                 |
-       |                                 |
-       |     D                           |
-       |     #                           |
-       S #                               |
-       |   #                             |
-     # |  #                              |
-   ---H- # #                            |
-                                         |
-  #######                                |
-                                         |
-                                         |
-                                         |
-                                         |
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW|
+#P###                                    |
+#|###T                                   |
+#S####                                   |
+#|###B##                                 |
+#|###  g#   #                            |
+#|#G |  #        #   D                   |
+#|###S  #            #                   |
+#|   |###                    r           |
+#|    #                      #           |
+###+###                                  |
+  ###                          |         |
+  R                            |         |
+  #####                        ||        |
+       ----------H             SS#       |
+ F                                       |
+WWWWWWWWWW+WWWW+W+WW++WW+++WW+WWWWWWWWWWW|
 +         +         +         +          |
