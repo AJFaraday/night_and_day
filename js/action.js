@@ -1,4 +1,8 @@
 action = {
+  shakeCamera: function() {
+    camera.shake(100, 0.01);
+  },
+
   walkLeft: function () {
     player.setVelocityX(-160);
     player.anims.play('left', true);
