@@ -30,7 +30,7 @@ action = {
     }
   },
   jumpToLevel: function (level) {
-    map.draw(level);
+    map.draw.call(this, level);
   },
   jumpToDoor: function (door_name) {
     var target_door = doors.children.entries.find(function (d) {
