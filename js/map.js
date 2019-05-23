@@ -21,8 +21,11 @@ map = {
       water.clear(true, true);
       keys.clear(true, true);
       springs.clear(true, true);
-      sliders.clear(true,true);
-      slider_tracks.clear(true,true);
+      sliders.clear(true, true);
+      slider_tracks.clear(true, true);
+      texts.forEach(function(t){t.destroy()});
+      texts = [];
+
       var data = {};
       Object.assign(data, map_data['default']);
       Object.assign(data, map_data[name]);
@@ -41,7 +44,7 @@ map = {
             if (space.offsetY) {
               ypos += block_size * space.offsetY
             }
-            map[space.method](xpos, ypos, space);
+            map[space.method].call(that, xpos, ypos, space);
           }
         }
       }
@@ -107,6 +110,14 @@ map = {
       key[data_key] = data[data_key];
     }
   },
+
+  add_text: function (x, y, data) {
+    var content = data.text;
+    delete data.text;
+    data = Object.assign(data, {fontSize: '32px', fill: '#000'});
+    texts.push(this.add.text(x, y, content, data));
+  },
+
   move_player: function (x, y, data) {
     player.setPosition(x, y);
   }

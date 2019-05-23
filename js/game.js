@@ -65,13 +65,14 @@ function create() {
   cursors = this.input.keyboard.createCursorKeys();
 
   initialize.background.call(this);
+  initialize.display.call(this);
+  initialize.text.call(this);
   initialize.player.call(this);
   initialize.platforms.call(this);
   initialize.camera.call(this);
   initialize.doors.call(this);
   initialize.water.call(this);
   initialize.keys.call(this);
-  initialize.display.call(this);
   initialize.springs.call(this);
   initialize.sliders.call(this);
 

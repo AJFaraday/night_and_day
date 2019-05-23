@@ -46,14 +46,14 @@ initialize = {
     initialize.drawHills.call(this);
   },
   platforms: function () {
-    var level = '001-boxes';
+    var level = '000-home';
     var level_from_url = utils.getQueryVariable('level');
 
     if (level_from_url) {
       level = level_from_url;
     }
     platforms = this.physics.add.staticGroup();
-    map.draw(level);
+    map.draw.call(this, level);
 
     // add breaking animation
     this.anims.create({
@@ -74,6 +74,9 @@ initialize = {
   },
   keys: function () {
     keys = this.physics.add.staticGroup();
+  },
+  text: function () {
+    texts = [];
   },
   sliders: function() {
     sliders = this.physics.add.staticGroup();

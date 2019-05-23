@@ -5,13 +5,22 @@ map_data = {
     '#': {method: 'add_box'},
     'P': {method: 'move_player'},
     'B': {method: 'add_breakable_box'},
-    'S': {method: 'add_spring'}
+    'S': {method: 'add_spring'},
+
+    'V': {method: 'add_slider', direction: 'vertical'},
+    '|': {method: 'add_slider_track', direction: 'vertical'},
+    '-': {method: 'add_slider_track', direction: 'horizontal'},
+    'H': {method: 'add_slider', direction: 'horizontal'}
+  },
+  '000-home': {
+    'T': {method: 'add_text', text: 'Welcome to Night and Day'},
+    'd': {method: 'add_text', text: 'Enter the door to start'},
+    's': {method: 'add_text', text: 'Keep walking for settings'},
+    'v':{method: 'add_text', text: 'Volume'},
+    'D': {method: 'add_door', target: '001-boxes'}
   },
   '001-boxes': {
-    'D': {
-      method: 'add_door',
-      target: '002-doors'
-    }
+    'D': {method: 'add_door', target: '002-doors'}
   },
   '002-doors': {
     '1': {method: 'add_door', name: '1', target: '2'},
@@ -49,10 +58,6 @@ map_data = {
     'D': {method: 'add_door', name: 'D', target: '006-sliders', required: 'brown_key'}
   },
   '006-sliders': {
-    'S': {method: 'add_slider', direction: 'vertical'},
-    '|': {method: 'add_slider_track', direction: 'vertical'},
-    '-': {method: 'add_slider_track', direction: 'horizontal'},
-    'H': {method: 'add_slider', direction: 'horizontal'},
     'D': {method: 'add_door', name: 'D', target: '001-boxes'},
 
     'r': {method: 'add_key', door: 'R', sprite: 'red_key', name: 'red_key'},
