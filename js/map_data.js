@@ -10,7 +10,11 @@ map_data = {
     'V': {method: 'add_slider', direction: 'vertical'},
     '|': {method: 'add_slider_track', direction: 'vertical'},
     '-': {method: 'add_slider_track', direction: 'horizontal'},
-    'H': {method: 'add_slider', direction: 'horizontal'}
+    'H': {method: 'add_slider', direction: 'horizontal'},
+
+    // Night box delimiters
+    '3': {method: 'add_box'},
+    '4': {method: 'add_box'}
   },
   '000-home': {
     'T': {method: 'add_text', text: 'Welcome to Night and Day'},
@@ -67,5 +71,9 @@ map_data = {
     'g': {method: 'add_key', sprite: 'green_key', name: 'green_key'},
     'G': {method: 'add_door', name: 'G', target: 'H', sprite: 'green_door', required: 'green_key'},
     'F': {method: 'add_door', name: 'H', target: 'G', sprite: 'green_door', required: 'green_key'}
+  },
+  '007-night-and-day': {
+    '3': {method: 'add_floor'},
+    '4': {method: 'add_floor'}
   }
 };
