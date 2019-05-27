@@ -12,6 +12,6 @@
                                          |
                 H----H                   |
                S  P   S                  |
-               ########                  |
-WWWWWWWWWWWWWWWWWWW3WWWWWWWWWWWWWWWWWWWW4|
+            GRD########DRG               |
+WWWWWWWWWW++WWWWWWW3WWWWWW++++++++WWWWWW4|
 +         +         +         +          |

@@ -96,10 +96,10 @@ map = {
 
   // Actions referred to in map_data
   add_floor: function (x, y, data) {
-    platforms.create(x, y, 'floor');
+    platforms.create(x, y, map.zone(x, y) + 'floor');
   },
   add_water: function (x, y, data) {
-    var w = water.create(x, y, 'water');
+    var w = water.create(x, y, map.zone(x, y) + 'water');
     w.deactivated = false;
   },
   add_box: function (x, y, data) {

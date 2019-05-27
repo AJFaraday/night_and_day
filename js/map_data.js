@@ -40,10 +40,7 @@ map_data = {
     'g': {method: 'add_key', door: 'G', sprite: 'green_key', name: 'green_key'}
   },
   '004-breaking': {
-    'D': {
-      method: 'add_door',
-      target: '005-maze'
-    }
+    'D': {method: 'add_door', target: '005-maze'}
   },
   '005-maze': {
     'O': {
@@ -74,6 +71,9 @@ map_data = {
   },
   '007-night-and-day': {
     '3': {method: 'add_floor'},
-    '4': {method: 'add_floor'}
+    '4': {method: 'add_floor'},
+    'D': {method: 'add_door', target: '007-night-and-day'},
+    'G': {method: 'add_door', target: '007-night-and-day', sprite: 'green_door'},
+    'R': {method: 'add_door', target: '007-night-and-day', sprite: 'red_door'}
   }
 };
