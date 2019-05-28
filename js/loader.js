@@ -34,7 +34,7 @@ loader = {
     utils.load_images.call(this, {
       dark_sky: 'assets/night_images/sky.png',
       dark_hills: 'assets/night_images/hills.png',
-      dark_cloud: 'assets/night_images/cloud.png',
+      moon: 'assets/night_images/moon.png',
 
       dark_water: 'assets/night_images/water.png',
       dark_floor: 'assets/night_images/ground.png',

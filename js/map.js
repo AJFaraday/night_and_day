@@ -43,6 +43,7 @@ map = {
           }
         }
       }
+      initialize.darkBackground.call(that);
 
       for (var y = 0; y < height_in_blocks; y++) {
         var row = rows[y];
@@ -62,6 +63,7 @@ map = {
         }
       }
       initialize.moveClouds();
+      initialize.depths();
     };
     xml_req.send();
   },

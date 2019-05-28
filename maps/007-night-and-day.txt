@@ -6,12 +6,12 @@
                                          |
                                          |
                                          |
-                                         |
-                                         |
-                                         |
-                                         |
-                H----H                   |
-               S  P   S                  |
+                 |  |                    |
+                 |  |                    |
+                 |  |                    |
+                 V  V                    |
+             BB H----H BB                |
+            grbS  P   Sbrg               |
             GRD########DRG               |
-WWWWWWWWWW++WWWWWWW3WWWWWW++++++++WWWWWW4|
+WWWWWWWWWW++WWWWWWW3WWWWWW++++WWWWWWWWWW4|
 +         +         +         +          |

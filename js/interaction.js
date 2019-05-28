@@ -28,7 +28,7 @@ interaction = {
       player.inventory.push(key.name);
       var x = 180 + (player.inventory.length * 48);
       var y = 32;
-      var inventoryDisplay = this.add.image(x, y, key.sprite);
+      var inventoryDisplay = this.add.image(x, y, map.zone(key.x, key.y) + key.sprite);
       inventoryDisplay.setScrollFactor(0);
       inventoryImages.push(inventoryDisplay);
       audio.play_sfx('pick_up')
@@ -53,7 +53,7 @@ interaction = {
   },
   breakPlatform: function (player, platform) {
     if (player.slamming || player.body.onCeiling() && !platform.breaking) {
-      platform.anims.play('break', false);
+      platform.anims.play(map.zone(platform.x, platform.y) + 'break', false);
 
       audio.play_sfx('break');
       platform.breaking = true;
