@@ -35,6 +35,9 @@ loader = {
       dark_sky: 'assets/night_images/sky.png',
       dark_hills: 'assets/night_images/hills.png',
       moon: 'assets/night_images/moon.png',
+      star1: 'assets/night_images/star1.png',
+      star2: 'assets/night_images/star2.png',
+      star3: 'assets/night_images/star3.png',
 
       dark_water: 'assets/night_images/water.png',
       dark_floor: 'assets/night_images/ground.png',

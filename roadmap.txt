@@ -1,5 +1,7 @@
+Bugs:
+- Restarting breaks game since night appeared
+
 features:
-- Home screen
 - - Title text
 - - volume slider(s)
 - - Door (s) to Level(s)

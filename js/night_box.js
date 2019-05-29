@@ -31,7 +31,12 @@ night_box = {
     }
   },
   finalise: function() {
-    night_box.boxes.push(Object.assign({}, night_box.workingBox));
+    var new_box = Object.assign({}, night_box.workingBox);
+    new_box.width = (new_box.right - new_box.left);
+    new_box.height = (new_box.bottom - new_box.top);
+    new_box.area = (new_box.height * new_box.width);
+    night_box.boxes.push(new_box);
+
     night_box.workingBox =  {top: null, bottom: null, right: null, left: null};
   },
 

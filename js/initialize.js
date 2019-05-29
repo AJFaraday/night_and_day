@@ -16,19 +16,19 @@ initialize = {
       x += 800;
     } while (x <= game.config.width);
   },
-  drawClouds: function() {
+  drawClouds: function () {
     clouds = [];
     var numClouds = 20;
-    for(var i = 0; i < numClouds; i++) {
+    for (var i = 0; i < numClouds; i++) {
       var img = this.add.image(0, 0, 'cloud');
       img.setOrigin(0, 0);
       clouds.push(img);
     }
   },
-  moveClouds: function() {
+  moveClouds: function () {
     var generator = new Phaser.Math.RandomDataGenerator([map.current]);
-    clouds.forEach(function(cloud){
-      var size = (generator.between(1,100) / 100);
+    clouds.forEach(function (cloud) {
+      var size = (generator.between(1, 100) / 100);
       var x = generator.between(0, 1400);
       var y = generator.between(0, 420);
       cloud.setX(x);
@@ -45,35 +45,54 @@ initialize = {
     initialize.drawClouds.call(this);
     initialize.drawHills.call(this);
   },
-  darkBackground: function() {
-    if(typeof dark_background_elements == 'object'){
+  darkBackground: function () {
+    if (typeof dark_background_elements == 'object') {
       dark_background_elements.forEach(
-        function(el) {
-          el.delete();
+        function (el) {
+          el.destroy();
         }
       );
     }
+    var generator = new Phaser.Math.RandomDataGenerator([map.current]);
+
     dark_background_elements = [];
     night_box.boxes.forEach(
-      function(box) {
-        var sky = game_pointer.add.image(box.left, box.top, 'dark_sky').setOrigin(0,0);
-        sky.frame.height = (box.bottom - box.top);
-        sky.frame.width = (box.right - box.left);
+      function (box) {
+        var sky = game_pointer.add.image(box.left, box.top, 'dark_sky').setOrigin(0, 0);
+        sky.frame.height = box.height;
+        sky.frame.width = box.width;
         sky.frame.updateUVs();
         dark_background_elements.push(sky);
 
-        var hills = game_pointer.add.image(box.left, box.bottom, 'dark_hills').setOrigin(0,1);
-        hills.frame.width = (box.right - box.left);
-        hills.frame.updateUVs();
-        dark_background_elements.push(hills);
-
-        if (((box.right - box.left) > 300) && (box.bottom - box.top) > 600) {
+        var no_stars = Math.ceil(box.area / 50000);
+        var stars = ['star1', 'star2', 'star3'];
+        var i = 0;
+        Array(no_stars).fill().forEach(
+          function (unused) {
+            var star_name = stars[(i += 1) % stars.length];
+            var star = game_pointer.add.image(
+              generator.between(box.left, (box.right - 50)),
+              generator.between(box.top, (box.bottom - 50)),
+              star_name
+            ).setOrigin(0, 0);
+            star.setScale(generator.between(10, 100) / 100);
+            dark_background_elements.push(star);
+          }
+        );
+        if (box.width >= 300 && box.height > 600) {
           var moon = game_pointer.add.image(
-            Math.floor((Math.random() * ((box.right - box.left) - 300)) + box.left),
-            Math.floor((Math.random() * ((box.bottom - box.top) - 300)) + box.top),
+            generator.between(box.left, (box.right - 300)),
+            generator.between(box.top, (box.bottom - 300)),
             'moon'
-          ).setOrigin(0,0);
+          ).setOrigin(0, 0);
           dark_background_elements.push(moon);
+        }
+
+        if (box.height > 400) {
+          var hills = game_pointer.add.image(box.left, box.bottom, 'dark_hills').setOrigin(0, 1);
+          hills.frame.width = (box.right - box.left);
+          hills.frame.updateUVs();
+          dark_background_elements.push(hills);
         }
       }
     );
@@ -118,7 +137,7 @@ initialize = {
   text: function () {
     texts = [];
   },
-  sliders: function() {
+  sliders: function () {
     sliders = this.physics.add.staticGroup();
     slider_tracks = this.physics.add.staticGroup();
   },
@@ -176,7 +195,7 @@ initialize = {
 
     this.cameras.main.startFollow(player);
   },
-  depths: function() {
+  depths: function () {
     player.setDepth(999);
     springs.setDepth(1000);
     doors.setDepth(1000);
