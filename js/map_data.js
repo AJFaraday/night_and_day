@@ -46,7 +46,8 @@ map_data = {
   },
   '005-maze': {
     'O': {
-      method: 'add_box',
+      method: 'add_box',                                   'D': {method: 'add_door', target: 'F'},
+    'F': {method: 'add_door', target: 'D'},
       offsetY: 0.5
     },
     'R': {method: 'add_door', name: 'R', sprite: 'red_door', required: 'red_key', target: 'T'},
@@ -69,7 +70,8 @@ map_data = {
   '007-night-and-day': {
     '3': {method: 'add_floor'},
     '4': {method: 'add_floor'},
-    'D': {method: 'add_door', target: '007-night-and-day'},
+    'D': {method: 'add_door', target: 'F', name: 'D'},
+    'F': {method: 'add_door', target: 'D', name: 'F'},
     'G': {method: 'add_door', target: '007-night-and-day', sprite: 'green_door'},
     'R': {method: 'add_door', target: '007-night-and-day', sprite: 'red_door'}
   }

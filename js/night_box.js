@@ -5,20 +5,20 @@ night_box = {
   boxes: [],
   workingBox: {top: null, bottom: null, right: null, left: null},
   setTopLeft: function (x, y) {
-    night_box.workingBox.top = y - (block_size / 2);
-    night_box.workingBox.left = x - (block_size / 2);
+    night_box.workingBox.top = y - (block_size / 2) - 1;
+    night_box.workingBox.left = x - (block_size / 2) - 1;
   },
   setTopRight: function (x, y) {
-    night_box.workingBox.top = y - (block_size / 2);
-    night_box.workingBox.right = x + (block_size / 2);
+    night_box.workingBox.top = y - (block_size / 2) - 1;
+    night_box.workingBox.right = x + (block_size / 2) + 1;
   },
   setBottomLeft: function (x, y) {
-    night_box.workingBox.bottom = y + (block_size / 2);
-    night_box.workingBox.left = x - (block_size / 2);
+    night_box.workingBox.bottom = y + (block_size / 2) + 1;
+    night_box.workingBox.left = x - (block_size / 2) - 1;
   },
   setBottomRight: function (x, y) {
-    var myBottom = y + (block_size / 2);
-    var myRight = x + (block_size / 2);
+    var myBottom = y + (block_size / 2) + 1;
+    var myRight = x + (block_size / 2) + 1;
     if (
       (typeof night_box.workingBox.top !== 'undfined') &&
       (typeof night_box.workingBox.left !== 'undfined') &&

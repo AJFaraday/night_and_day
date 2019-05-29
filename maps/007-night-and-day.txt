@@ -1,17 +1,17 @@
-                   1                    2|
-                                         |
-                                         |
-                                         |
-                                         |
-                                         |
-                                         |
-                                         |
-                 |  |                    |
-                 |  |                    |
-                 |  |                    |
-                 V  V                    |
-             BB H----H BB                |
-            grbS  P   Sbrg               |
-            GRD########DRG               |
-WWWWWWWWWW++WWWWWWW3WWWWWW++WWWWWWWWWWWW4|
+                    1                   2|
+                   ##                    |
+                   ##                    |
+                   ##                    |
+                   ##                    |
+                   ##                    |
+                   ##                    |
+                   ##                    |
+                 | ##  |                 |
+                 | ##  |                 |
+                 | ##  |                 |
+                 V ##  V                 |
+             BB H--##--H BB              |
+             grbS  ##P Sbrg              |
+            GRD#########FRG              |
+WWWWWWWWWW++WWWWWWWW3WWWWWW++WWWWWWWWWWW4|
 +         +         +         +          |

@@ -5,20 +5,20 @@ action = {
 
   walkLeft: function () {
     player.setVelocityX(-160);
-    player.anims.play('left', true);
+    player.anims.play(player.zone + 'left', true);
   },
   walkRight: function () {
     player.setVelocityX(160);
-    player.anims.play('right', true);
+    player.anims.play(player.zone + 'right', true);
   },
   faceFront: function () {
     player.setVelocityX(0);
     if (!player.slamming) {
-      player.anims.play('turn');
+      player.anims.play(player.zone + 'turn');
     }
   },
   slam: function () {
-    player.anims.play('slam', true);
+    player.anims.play(player.zone + 'slam', true);
     player.slamming = true;
     player.setVelocityY(400);
   },
@@ -37,7 +37,7 @@ action = {
       return d.name == door_name
     });
     if (typeof(target_door) !== 'undefined') {
-      player.setPosition(target_door.x, target_door.y);
+      map.move_player(target_door.x, target_door.y, {});
     }
   },
   enterDoor: function () {

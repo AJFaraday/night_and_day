@@ -146,9 +146,16 @@ initialize = {
     player = game_pointer.physics.add.sprite(100, 100, 'dude');
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
+    player.zone = '';
     game_pointer.anims.create({
       key: 'left',
       frames: this.anims.generateFrameNumbers('dude', {start: 0, end: 3}),
+      frameRate: 10,
+      repeat: -1
+    });
+    game_pointer.anims.create({
+      key: 'dark_left',
+      frames: this.anims.generateFrameNumbers('dark_dude', {start: 0, end: 3}),
       frameRate: 10,
       repeat: -1
     });
@@ -156,6 +163,11 @@ initialize = {
     game_pointer.anims.create({
       key: 'turn',
       frames: [{key: 'dude', frame: 4}],
+      frameRate: 20
+    });
+    game_pointer.anims.create({
+      key: 'dark_turn',
+      frames: [{key: 'dark_dude', frame: 4}],
       frameRate: 20
     });
 
@@ -166,8 +178,21 @@ initialize = {
       repeat: -1
     });
     game_pointer.anims.create({
+      key: 'dark_right',
+      frames: this.anims.generateFrameNumbers('dark_dude', {start: 5, end: 8}),
+      frameRate: 10,
+      repeat: -1
+    });
+
+
+    game_pointer.anims.create({
       key: 'slam',
       frames: [{key: 'dude', frame: 9}],
+      frameRate: 20
+    });
+    game_pointer.anims.create({
+      key: 'dark_slam',
+      frames: [{key: 'dark_dude', frame: 9}],
       frameRate: 20
     });
 

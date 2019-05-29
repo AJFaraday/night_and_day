@@ -105,7 +105,8 @@ map = {
     w.deactivated = false;
   },
   add_box: function (x, y, data) {
-    platforms.create(x, y, map.zone(x, y) + 'box');
+    var box = platforms.create(x, y, map.zone(x, y) + 'box');
+    box.active = false;
   },
   add_slider: function (x, y, data) {
     map.add_slider_track(x, y, data);
@@ -160,6 +161,11 @@ map = {
 
   move_player: function (x, y, data) {
     player.setPosition(x, y);
+    if(night_box.contains(x,y)) {
+      player.zone = 'dark_';
+    } else {
+      player.zone = '';
+    }
   }
 
 };
