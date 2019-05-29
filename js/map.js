@@ -23,7 +23,9 @@ map = {
       springs.clear(true, true);
       sliders.clear(true, true);
       slider_tracks.clear(true, true);
-      texts.forEach(function(t){t.destroy()});
+      texts.forEach(function (t) {
+        t.destroy()
+      });
       texts = [];
 
       var data = {};
@@ -34,13 +36,25 @@ map = {
       for (var y = 0; y < height_in_blocks; y++) {
         var row = rows[y];
         for (var x = 0; x < width_in_blocks; x++) {
+          var xpos = x * block_size + (block_size / 2);
+          var ypos = y * block_size + (block_size / 2);
+          if (night_box.boxDelimiters.includes(row.charAt(x))) {
+            map.setNightBoxDelimter.call(this, row.charAt(x), xpos, ypos);
+          }
+        }
+      }
+      initialize.darkBackground.call(that);
+
+      for (var y = 0; y < height_in_blocks; y++) {
+        var row = rows[y];
+        for (var x = 0; x < width_in_blocks; x++) {
+          var xpos = x * block_size + (block_size / 2);
+          var ypos = y * block_size + (block_size / 2);
           var space = data[row.charAt(x)];
           if (space) {
-            var xpos = x * block_size + (block_size / 2);
             if (space.offsetX) {
               xpos += block_size * space.offsetX
             }
-            var ypos = y * block_size + (block_size / 2);
             if (space.offsetY) {
               ypos += block_size * space.offsetY
             }
@@ -49,44 +63,71 @@ map = {
         }
       }
       initialize.moveClouds();
+      initialize.depths();
     };
     xml_req.send();
   },
+  // Used to respond to night box delimiters
+  setNightBoxDelimter: function (char, x, y) {
+    switch (char) {
+      case '1':
+        night_box.setTopLeft(x, y);
+        break;
+      case '2':
+        night_box.setTopRight(x, y);
+        break;
+      case '3':
+        night_box.setBottomLeft(x, y);
+        break;
+      case '4':
+        night_box.setBottomRight(x, y);
+        break;
+    }
+  },
+  zone: function (x, y) {
+    if (night_box.contains(x, y)) {
+      return 'dark_';
+    } else {
+      return '';
+    }
+  },
+
   restart: function () {
     map.draw.call(this, map.current);
   },
 
   // Actions referred to in map_data
   add_floor: function (x, y, data) {
-    platforms.create(x, y, 'floor');
+    platforms.create(x, y, map.zone(x, y) + 'floor');
   },
   add_water: function (x, y, data) {
-    var w = water.create(x, y, 'water');
+    var w = water.create(x, y, map.zone(x, y) + 'water');
     w.deactivated = false;
   },
   add_box: function (x, y, data) {
-    platforms.create(x, y, 'box');
+    var box = platforms.create(x, y, map.zone(x, y) + 'box');
+    box.active = false;
   },
   add_slider: function (x, y, data) {
     map.add_slider_track(x, y, data);
-    var slider = sliders.create(x, y, data.direction + '_slider');
+    var slider = sliders.create(x, y, map.zone(x, y) + data.direction + '_slider');
     for (var key in data) {
       slider[key] = data[key];
     }
   },
   add_slider_track: function (x, y, data) {
-    var track = slider_tracks.create(x, y, data.direction + '_track');
+    var track = slider_tracks.create(x, y, map.zone(x, y) + data.direction + '_track');
     for (var key in data) {
       track[key] = data[key];
     }
   },
   add_spring: function (x, y, data) {
-    var spring = springs.create(x, y, 'spring');
+    var spring = springs.create(x, y, map.zone(x, y) + 'spring');
     spring.body.checkCollision.left = false;
     spring.body.checkCollision.right = false;
   },
   add_breakable_box: function (x, y, data) {
-    var box = platforms.create(x, y, 'breakable_box');
+    var box = platforms.create(x, y, map.zone(x, y) + 'breakable_box');
     box.breakable = true;
     box.breaking = false;
   },
@@ -95,7 +136,7 @@ map = {
     if (typeof data['sprite'] !== 'undefined') {
       sprite = data['sprite'];
     }
-    var door = doors.create(x, y, sprite);
+    var door = doors.create(x, y, map.zone(x, y) + sprite);
     for (var key in data) {
       door[key] = data[key];
     }
@@ -105,7 +146,7 @@ map = {
     if (typeof data['sprite'] !== 'undefined') {
       sprite = data['sprite'];
     }
-    var key = keys.create(x, y, sprite);
+    var key = keys.create(x, y, map.zone(x, y) + sprite);
     for (var data_key in data) {
       key[data_key] = data[data_key];
     }
@@ -120,6 +161,11 @@ map = {
 
   move_player: function (x, y, data) {
     player.setPosition(x, y);
+    if(night_box.contains(x,y)) {
+      player.zone = 'dark_';
+    } else {
+      player.zone = '';
+    }
   }
 
 };

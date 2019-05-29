@@ -30,35 +30,8 @@ function preload() {
 
   audio.load.call(this);
 
-  utils.load_images.call(this, {
-    sky: 'assets/images/sky.png',
-    hills: 'assets/images/hills.png',
-    cloud: 'assets/images/cloud.png',
-
-    water: 'assets/images/water.png',
-    floor: 'assets/images/ground.png',
-    box: 'assets/images/box.png',
-    door: 'assets/images/door.png',
-    red_door: 'assets/images/red_door.png',
-    green_door: 'assets/images/green_door.png',
-    brown_key: 'assets/images/brown_key.png',
-    red_key: 'assets/images/red_key.png',
-    green_key: 'assets/images/green_key.png',
-    spring: 'assets/images/spring.png',
-
-    horizontal_slider: 'assets/images/horizontal_slider.png',
-    horizontal_track: 'assets/images/horizontal_track.png',
-    vertical_slider: 'assets/images/vertical_slider.png',
-    vertical_track: 'assets/images/vertical_track.png'
-  });
-  this.load.spritesheet('dude',
-    prefix + 'assets/images/dude.png',
-    {frameWidth: 32, frameHeight: 48}
-  );
-  this.load.spritesheet('breakable_box',
-    prefix + 'assets/images/breakable_box.png',
-    {frameWidth: 48, frameHeight: 48}
-  );
+  loader.day.call(this);
+  loader.night.call(this);
 }
 
 function create() {
