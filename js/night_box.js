@@ -51,5 +51,10 @@ night_box = {
         )
       }
     )
+  },
+
+  clear: function(){
+    night_box.boxes = [];
+    night_box.workingBox = {top: null, bottom: null, right: null, left: null};
   }
 };

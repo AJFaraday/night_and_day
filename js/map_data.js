@@ -46,8 +46,7 @@ map_data = {
   },
   '005-maze': {
     'O': {
-      method: 'add_box',                                   'D': {method: 'add_door', target: 'F'},
-    'F': {method: 'add_door', target: 'D'},
+      method: 'add_box',
       offsetY: 0.5
     },
     'R': {method: 'add_door', name: 'R', sprite: 'red_door', required: 'red_key', target: 'T'},
@@ -59,7 +58,7 @@ map_data = {
     'D': {method: 'add_door', name: 'D', target: '006-sliders', required: 'brown_key'}
   },
   '006-sliders': {
-    'D': {method: 'add_door', name: 'D', target: '001-boxes'},
+    'D': {method: 'add_door', name: 'D', target: '007-night'},
 
     'R': {method: 'add_door', name: 'R', sprite: 'red_door', required: 'red_key', target: 'T'},
     'T': {method: 'add_door', name: 'T', sprite: 'red_door', required: 'red_key', target: 'R'},
@@ -67,7 +66,10 @@ map_data = {
     'G': {method: 'add_door', name: 'G', target: 'H', sprite: 'green_door', required: 'green_key'},
     'F': {method: 'add_door', name: 'H', target: 'G', sprite: 'green_door', required: 'green_key'}
   },
-  '007-night-and-day': {
+  '007-night': {
+    'D': {method: 'add_door', target: '000-home'}
+  },
+  'TEST-000-night-and-day': {
     '3': {method: 'add_floor'},
     '4': {method: 'add_floor'},
     'D': {method: 'add_door', target: 'F', name: 'D'},

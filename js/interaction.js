@@ -9,13 +9,21 @@ interaction = {
     }
   },
   killPlayer: function (player, killer) {
-    player.active = false;
-    audio.play_die();
-    map.restart();
-    setTimeout(
-      interaction.resumeGame,
-      4000
-    )
+    if (!game.restarting) {
+      game.restarting = true;
+      setTimeout(
+        function () {
+          player.active = false;
+          audio.play_die();
+          map.restart();
+          setTimeout(
+            interaction.resumeGame,
+            2000
+          )
+        },
+        100
+      )
+    }
   },
   resumeGame: function () {
     player.active = true;
@@ -35,6 +43,9 @@ interaction = {
     }
   },
   landOnPlatform: function (player, platform) {
+    if (!platform.breakable && !player.slamming && !player.jumping) {
+      return;
+    }
     if (platform.breakable) {
       interaction.breakPlatform(player, platform);
     }
