@@ -225,6 +225,8 @@ initialize = {
     springs.setDepth(1000);
     doors.setDepth(1000);
     water.setDepth(1000);
+    slider_tracks.setDepth(998);
+    sliders.setDepth(999);
   }
 
 };
