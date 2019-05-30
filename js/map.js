@@ -24,8 +24,9 @@ map = {
       sliders.clear(true, true);
       slider_tracks.clear(true, true);
       texts.forEach(function (t) {
-        t.destroy()
+        t.destroy();
       });
+      night_box.clear();
       texts = [];
 
       var data = {};
@@ -64,6 +65,7 @@ map = {
       }
       initialize.moveClouds();
       initialize.depths();
+      game.restarting = false;
     };
     xml_req.send();
   },
@@ -93,6 +95,7 @@ map = {
   },
 
   restart: function () {
+    game.restarting = true;
     map.draw.call(this, map.current);
   },
 
@@ -156,7 +159,7 @@ map = {
     var content = data.text;
     delete data.text;
     data = Object.assign(data, {fontSize: '32px', fill: '#000'});
-    texts.push(this.add.text(x, y, content, data));
+    texts.push(game_pointer.add.text(x, y, content, data));
   },
 
   move_player: function (x, y, data) {

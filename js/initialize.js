@@ -224,6 +224,7 @@ initialize = {
     player.setDepth(999);
     springs.setDepth(1000);
     doors.setDepth(1000);
+    water.setDepth(1000);
   }
 
 };
