@@ -13,8 +13,8 @@ map_data = {
     'H': {method: 'add_slider', direction: 'horizontal'},
 
     // Night box delimiters
-    '3': {method: 'add_box'},
-    '4': {method: 'add_box'},
+    '3': {method: 'add_floor'},
+    '4': {method: 'add_floor'},
 
     'r': {method: 'add_key', sprite: 'red_key', name: 'red_key'},
     'g': {method: 'add_key', sprite: 'green_key', name: 'green_key'},
@@ -67,7 +67,11 @@ map_data = {
     'F': {method: 'add_door', name: 'H', target: 'G', sprite: 'green_door', required: 'green_key'}
   },
   '007-night': {
-    'D': {method: 'add_door', target: '000-home'}
+    'D': {method: 'add_door', target: 'd', name: 'D'},
+    'd': {method: 'add_door', target: 'D', name: 'd'},
+    'E': {method: 'add_door', target: '000-home'} ,
+    'R': {method: 'add_door', target: 'r', sprite: 'red_door', name: 'R'},
+    'r': {method: 'add_door', target: 'R', sprite: 'red_door', name: 'r'}
   },
   'TEST-000-night-and-day': {
     '3': {method: 'add_floor'},
