@@ -10,7 +10,7 @@
                #                         |
    ####                      D           |
                   ##      ####           |
-          ###                            |
+   h      ###                            |
 P      #      ##                         |
 #   #                                    |
 WWWWWWWWWW++WWWWWWWWW++WWWWWWWWWWWWWWWWWW|
