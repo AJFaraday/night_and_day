@@ -1,17 +1,17 @@
                                          |
                                          |
                                          |
-                                         |
-                                    D    |
-         g                       ####    |
-         ###                             |
-              ###                        |
-  P                 #########            |
+  P    g                                 |
+       ####                         D    |
+             #### #### #### #### ####    |
                                          |
                                          |
                                          |
                                          |
+           #####   r                     |
+       ##                                |
                                          |
-R                                  G  r  |
+   ##                                    |
+R                                  G     |
 WWWWWWWWWW++WWWWWWWWWW++WWWWWWWWWWWWWWWWW|
 +         +         +         +          |
