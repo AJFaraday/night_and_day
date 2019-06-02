@@ -28,7 +28,7 @@ map_data = {
     "D": { method: "add_door", target: "001-boxes" },
     "h": {
       method: "add_text",
-      text: "Press the DOWN arrow to enter doors",
+      text: "Press the DOWN arrow to enter doors.",
       fontSize: "16px"
     }
   },
@@ -36,7 +36,7 @@ map_data = {
     "D": { method: "add_door", target: "002-doors" },
     "h": {
       method: "add_text",
-      text: "Jump with the UP arrow",
+      text: "Jump with the UP arrow.",
       fontSize: "16px"
     }
   },
@@ -64,13 +64,13 @@ map_data = {
     },
     "h": {
       method: "add_text",
-      text: "Some doors need keys to be opened",
+      text: "Some doors need keys to be opened.",
       fontSize: "16px"
     }
   },
   "004-breaking": {
     "D": { method: "add_door", target: "005-maze" },
-    "H": {
+    "j": {
       method: "add_text",
       text: "That floor looks weak.",
       fontSize: "16px"
@@ -129,7 +129,7 @@ map_data = {
     },
     "h": {
       method: "add_text",
-      text: "Press DOWN to bounce higher",
+      text: "Press DOWN to bounce higher.",
       fontSize: "16px"
     }
   },
@@ -170,7 +170,7 @@ map_data = {
       text: "Slam the slider",
       fontSize: "16px"
     },
-    "H": {
+    "j": {
       method: "add_text",
       text: "to move it",
       fontSize: "16px"
@@ -185,6 +185,12 @@ map_data = {
     "h": {
       method: "add_text",
       text: "Oops, nothing over here...",
+      fontSize: "16px",
+      fill: "#fff"
+    },
+    "j": {
+      method: "add_text",
+      text: "Maybe take a leap of faith?",
       fontSize: "16px",
       fill: "#fff"
     }
