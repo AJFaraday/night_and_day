@@ -12,6 +12,6 @@
                     |  #                 |
    s                |                    |
                      #                   |
-  P    D                                 |
+  P    D h                               |
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW|
 +         +         +         +          |
