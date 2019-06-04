@@ -171,7 +171,6 @@ map = {
 
   add_text: function (x, y, data) {
     var content = data.text;
-    delete data.text;
     data = Object.assign({fontSize: '32px', fill: '#000'}, data);
     texts.push(game_pointer.add.text(x, y, content, data));
   },
