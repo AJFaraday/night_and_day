@@ -46,12 +46,13 @@ map = {
       }
       initialize.darkBackground.call(that);
 
+      map.space_indexes = {};
       for (var y = 0; y < height_in_blocks; y++) {
         var row = rows[y];
         for (var x = 0; x < width_in_blocks; x++) {
           var xpos = x * block_size + (block_size / 2);
           var ypos = y * block_size + (block_size / 2);
-          var space = data[row.charAt(x)];
+          var space = map.getSpaceData(row.charAt(x), data);
           if (space) {
             if (space.offsetX) {
               xpos += block_size * space.offsetX
@@ -68,6 +69,19 @@ map = {
       game.restarting = false;
     };
     xml_req.send();
+  },
+  getSpaceData: function (char, data) {
+    var data = data[char];
+    if (Array.isArray(data)) {
+      if (typeof map.space_indexes[char] == 'number') {
+        map.space_indexes[char] += 1;
+      } else {
+        map.space_indexes[char] = 0;
+      }
+      return data[map.space_indexes[char] % data.length];
+    } else if (typeof data == 'object') {
+      return data;
+    }
   },
   // Used to respond to night box delimiters
   setNightBoxDelimter: function (char, x, y) {
@@ -164,7 +178,7 @@ map = {
 
   move_player: function (x, y, data) {
     player.setPosition(x, y);
-    if(night_box.contains(x,y)) {
+    if (night_box.contains(x, y)) {
       player.zone = 'dark_';
     } else {
       player.zone = '';
