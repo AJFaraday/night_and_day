@@ -1,31 +1,31 @@
 map_data = {
   default: {
-    "W": { method: "add_floor" },
-    "+": { method: "add_water" },
-    "#": { method: "add_box" },
-    "P": { method: "move_player" },
-    "B": { method: "add_breakable_box" },
-    "S": { method: "add_spring" },
+    "W": {method: "add_floor"},
+    "+": {method: "add_water"},
+    "#": {method: "add_box"},
+    "P": {method: "move_player"},
+    "B": {method: "add_breakable_box"},
+    "S": {method: "add_spring"},
 
-    "V": { method: "add_slider", direction: "vertical" },
-    "|": { method: "add_slider_track", direction: "vertical" },
-    "-": { method: "add_slider_track", direction: "horizontal" },
-    "H": { method: "add_slider", direction: "horizontal" },
+    "V": {method: "add_slider", direction: "vertical"},
+    "|": {method: "add_slider_track", direction: "vertical"},
+    "-": {method: "add_slider_track", direction: "horizontal"},
+    "H": {method: "add_slider", direction: "horizontal"},
 
     // Night box delimiters
-    "3": { method: "add_floor" },
-    "4": { method: "add_floor" },
+    "3": {method: "add_floor"},
+    "4": {method: "add_floor"},
 
-    "r": { method: "add_key", sprite: "red_key", name: "red_key" },
-    "g": { method: "add_key", sprite: "green_key", name: "green_key" },
-    "b": { method: "add_key", sprite: "brown_key", name: "brown_key" }
+    "r": {method: "add_key", sprite: "red_key", name: "red_key"},
+    "g": {method: "add_key", sprite: "green_key", name: "green_key"},
+    "b": {method: "add_key", sprite: "brown_key", name: "brown_key"}
   },
   "000-home": {
-    "T": { method: "add_text", text: "Welcome to Night and Day" },
-    "d": { method: "add_text", text: "Enter the door to start" },
-    "s": { method: "add_text", text: "Keep walking for settings" },
-    "v": { method: "add_text", text: "Volume" },
-    "D": { method: "add_door", target: "001-boxes" },
+    "T": {method: "add_text", text: "Welcome to Night and Day"},
+    "d": {method: "add_text", text: "Enter the door to start"},
+    "s": {method: "add_text", text: "Keep walking for settings"},
+    "v": {method: "add_text", text: "Volume"},
+    "D": {method: "add_door", target: "001-boxes"},
     "h": {
       method: "add_text",
       text: "Press the DOWN arrow to enter doors.",
@@ -33,7 +33,7 @@ map_data = {
     }
   },
   "001-boxes": {
-    "D": { method: "add_door", target: "002-doors" },
+    "D": {method: "add_door", target: "002-doors"},
     "h": {
       method: "add_text",
       text: "Jump with the UP arrow.",
@@ -41,9 +41,9 @@ map_data = {
     }
   },
   "002-doors": {
-    "1": { method: "add_door", name: "1", target: "2" },
-    "2": { method: "add_door", name: "2", target: "1" },
-    "3": { method: "add_door", target: "003-keys" }
+    "1": {method: "add_door", name: "1", target: "2"},
+    "2": {method: "add_door", name: "2", target: "1"},
+    "3": {method: "add_door", target: "003-keys"}
   },
   // TODO add_key, interaction with key, sprite name for door
   "003-keys": {
@@ -54,7 +54,7 @@ map_data = {
       sprite: "red_door",
       required: "red_key"
     },
-    "D": { method: "add_door", name: "D", target: "R", sprite: "red_door" },
+    "D": {method: "add_door", name: "D", target: "R", sprite: "red_door"},
     "G": {
       method: "add_door",
       name: "G",
@@ -69,7 +69,7 @@ map_data = {
     }
   },
   "004-breaking": {
-    "D": { method: "add_door", target: "005-maze" },
+    "D": {method: "add_door", target: "005-maze"},
     "j": {
       method: "add_text",
       text: "That floor looks weak.",
@@ -134,7 +134,7 @@ map_data = {
     }
   },
   "006-sliders": {
-    "D": { method: "add_door", name: "D", target: "007-night" },
+    "D": {method: "add_door", name: "D", target: "007-night"},
 
     "R": {
       method: "add_door",
@@ -177,11 +177,11 @@ map_data = {
     }
   },
   "007-night": {
-    "D": { method: "add_door", target: "d", name: "D" },
-    "d": { method: "add_door", target: "D", name: "d" },
-    "E": { method: "add_door", target: "000-home" },
-    "R": { method: "add_door", target: "r", sprite: "red_door", name: "R" },
-    "r": { method: "add_door", target: "R", sprite: "red_door", name: "r" },
+    "D": {method: "add_door", target: "d", name: "D"},
+    "d": {method: "add_door", target: "D", name: "d"},
+    "E": {method: "add_door", target: "008-many-doors"},
+    "R": {method: "add_door", target: "r", sprite: "red_door", name: "R"},
+    "r": {method: "add_door", target: "R", sprite: "red_door", name: "r"},
     "h": {
       method: "add_text",
       text: "Oops, nothing over here...",
@@ -195,16 +195,41 @@ map_data = {
       fill: "#fff"
     }
   },
+  "008-many-doors": {
+    "D": [
+      {"method": "add_door", "name": "D1", "target": "D6"},
+      {"method": "add_door", "name": "D2", "target": "D11"},
+      {"method": "add_door", "name": "D3", "target": "D16"},
+      {"method": "add_door", "name": "D4", "target": "D5"},
+      {"method": "add_door", "name": "D5", "target": "D4"},
+      {"method": "add_door", "name": "D6", "target": "D1"},
+      {"method": "add_door", "name": "D7", "target": "D18"},
+      {"method": "add_door", "name": "D8", "target": "D12"},
+      {"method": "add_door", "name": "D9", "target": "D10"},
+      {"method": "add_door", "name": "D10", "target": "D9"},
+      {"method": "add_door", "name": "D11", "target": "D2"},
+      {"method": "add_door", "name": "D12", "target": "D8"},
+      {"method": "add_door", "name": "D13", "target": "D17"},
+      {"method": "add_door", "name": "D14", "target": "D15"},
+      {"method": "add_door", "name": "D15", "target": "D14"},
+      {"method": "add_door", "name": "D16", "target": "D3"},
+      {"method": "add_door", "name": "D17", "target": "D13"},
+      {"method": "add_door", "name": "D18", "target": "D7"},
+      {"method": "add_door", "name": "D19", "target": "D20"},
+      {"method": "add_door", "name": "D20", "target": "D19"}
+    ],
+    "R": {method: "add_door", target: "000-home", sprite: "red_door", required: "red_key"}
+  },
   "TEST-000-night-and-day": {
-    "3": { method: "add_floor" },
-    "4": { method: "add_floor" },
-    "D": { method: "add_door", target: "F", name: "D" },
-    "F": { method: "add_door", target: "D", name: "F" },
+    "3": {method: "add_floor"},
+    "4": {method: "add_floor"},
+    "D": {method: "add_door", target: "F", name: "D"},
+    "F": {method: "add_door", target: "D", name: "F"},
     "G": {
       method: "add_door",
       target: "007-night-and-day",
       sprite: "green_door"
     },
-    "R": { method: "add_door", target: "007-night-and-day", sprite: "red_door" }
+    "R": {method: "add_door", target: "007-night-and-day", sprite: "red_door"}
   }
-}
+};

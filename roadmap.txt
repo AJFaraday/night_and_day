@@ -1,35 +1,25 @@
 Bugs:
-- Restarting breaks game since night appeared
+- Improve performance
+- text vanishes on restart
+- better handling of multiple night boxes (overlapping?) 
 
 features:
-- - Title text
-- - volume slider(s)
-- - Door (s) to Level(s)
+- button’s
+- - one off movement
+- - act, and return when button released
 - Levers
 - - start/stop block movement
 - - make one-off movement
 - Animated water
-- hint messages on screen
 - ledge hanging
 - multiple campaigns?
 
 Longer term:
-- night and day
-- - New paper-themed tileset, character etc.
-- - load both tilesets and method to get asset by tileset
-- - A way to define multiple zones (possibly second map file)
-- - - Choose tileset based on zone
-- - - Build background based on zone (much harder)
+
 - - second player
 - - - key mappings
 - - - actions
 
-notes:
 
-// do something after n milliseconds
-player.active = false;
-this.time.delayedCall(500, function () {
-  player.active = true;
-});
 
 
