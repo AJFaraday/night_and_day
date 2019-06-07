@@ -22,11 +22,22 @@ map_data = {
   },
   "000-home": {
     "T": [
-      {method: "add_text", text: "Volume"},
       {method: "add_text", text: "Welcome to Night and Day"},
       {method: "add_text", text: "Enter the door to start"},
       {method: "add_text", text: "Keep walking for settings"},
       {method: "add_text", text: "Press the DOWN arrow to enter doors.", fontSize: "16px"}
+    ],
+    'M': [
+      {method: "add_text", text: "Music"},
+      {method: "add_text", text: "Volume"}
+    ],
+    'S': [
+      {method: "add_text", text: "Sound Effects"},
+      {method: "add_text", text: "Volume"}
+    ],
+    'V': [
+      {method: "add_slider", direction: "vertical", up_function: 'audio.music_up()', down_function: 'audio.music_down()'},
+      {method: "add_slider", direction: "vertical", up_function: 'audio.sfx_up()', down_function: 'audio.sfx_down()'}
     ],
     "D": {method: "add_door", target: "001-boxes"}
   },

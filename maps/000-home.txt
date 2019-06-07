@@ -3,15 +3,15 @@
                                          |
                                          |
                                          |
+                  M       S              |
+                  M       S              |
                                          |
-                  T                      |
-                                         |
-   T                |                    |
-                    |#                   |
-   T                V                    |
-                    |  #                 |
-   T                |                    |
-                     #                   |
+   T                |      |             |
+                    |#     |#            |
+   T                V      V             |
+                    |  #   | #           |
+   T                |      |             |
+                     #      #            |
   P    D T                               |
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW|
 +         +         +         +          |

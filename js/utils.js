@@ -20,6 +20,11 @@ utils = {
       }
     }
     return (null);
+  },
+  evalIfDefined: function(code) {
+    if(typeof code != 'undefined'){
+      eval(code)
+    }
   }
 }
 ;
