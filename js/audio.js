@@ -18,7 +18,9 @@ audio = {
         var path = audio.sounds[key];
         audio.game.load.audio(key, [prefix + path]);
       }
-    )
+    );
+    sfx_volume = 0.5;
+    theme_volume = 0.5;
   },
 
   sound_instances: {},
@@ -31,7 +33,7 @@ audio = {
       'theme',
       {
         loop: true,
-        volume: 0.4
+        volume: theme_volume
       }
     );
     audio.theme.play();
@@ -50,7 +52,7 @@ audio = {
     audio.sound_instances[key] = audio.game.sound.add(
       key,
       {
-        volume: 0.6,
+        volume: sfx_volume,
         loop: false
       }
     );
@@ -69,6 +71,20 @@ audio = {
   play_die: function () {
     audio.play_sfx('die');
     audio.pause_theme();
+  },
+  music_up: function () {
+    theme_volume += 0.25;
+    audio.theme.setVolume(theme_volume);
+  },
+  music_down: function () {
+    theme_volume -= 0.25;
+    audio.theme.setVolume(theme_volume);
+  },
+  sfx_up: function () {
+    sfx_volume += 0.25;
+  },
+  sfx_down: function () {
+    sfx_volume -= 0.25;
   }
 
 };

@@ -1,10 +1,8 @@
 Bugs:
 - Improve performance
-- text vanishes on restart
-- better handling of multiple night boxes (overlapping?) 
 
 features:
-- button’s
+- buttons
 - - one off movement
 - - act, and return when button released
 - Levers

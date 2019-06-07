@@ -54,6 +54,7 @@ slider_actions = {
     if (slider_actions.sliderTrackAbove(slider)) {
       slider.setY(slider.y - block_size);
       slider.refreshBody();
+      utils.evalIfDefined(slider.up_function);
       player.setVelocityY(100);
     } else {
       audio.play_sfx('head_block');
@@ -63,6 +64,7 @@ slider_actions = {
     if (slider_actions.sliderTrackBelow(slider)) {
       slider.setY(slider.y + block_size);
       slider.refreshBody();
+      utils.evalIfDefined(slider.down_function);
     } else {
       audio.play_sfx('head_block');
     }
@@ -71,14 +73,17 @@ slider_actions = {
     if (slider_actions.sliderTrackRight(slider)) {
       slider.setX(slider.x + block_size);
       slider.refreshBody();
+      utils.evalIfDefined(slider.right_function);
     } else {
       audio.play_sfx('head_block');
     }
+
   },
   moveSliderLeft: function (slider) {
     if (slider_actions.sliderTrackLeft(slider)) {
       slider.setX(slider.x - block_size);
       slider.refreshBody();
+      utils.evalIfDefined(slider.left_function);
     } else {
       audio.play_sfx('head_block');
     }
