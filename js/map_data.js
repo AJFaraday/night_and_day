@@ -154,5 +154,5 @@ map_data = {
     "R": [
       {method: "add_door", target: "R2", name: "R1", sprite: "red_door"},
       {method: "add_door", target: "R1", name: "R2", sprite: "red_door"}
-  }
+  ]
 };
