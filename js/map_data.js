@@ -147,7 +147,12 @@ map_data = {
       {method: "add_door", target: "F", name: "D"},
       {method: "add_door", target: "D", name: "F"}
     ],
-    "G": {method: "add_door", target: "007-night-and-day", sprite: "green_door"},
-    "R": {method: "add_door", target: "007-night-and-day", sprite: "red_door"}
+    "G": [
+      {method: "add_door", target: "G2", name: 'G1', sprite: "green_door"},
+      {method: "add_door", target: "G1" name: "G2" sprite: "green_door"}
+    ],
+    "R": [
+      {method: "add_door", target: "R2", name: "R1", sprite: "red_door"},
+      {method: "add_door", target: "R1", name: "R2", sprite: "red_door"}
   }
 };
