@@ -1,9 +1,9 @@
 // Should be the only difference between master and gh-pages
-prefix = '/night_and_day/';
+prefix = '/';
 
 block_size = 48;
-height_in_blocks = 16;
-width_in_blocks = 41;
+height_in_blocks = 25;
+width_in_blocks = 100;
 var config = {
   type: Phaser.AUTO,
   width: (block_size * width_in_blocks),

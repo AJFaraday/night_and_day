@@ -199,6 +199,9 @@ initialize = {
     // Not part of Phaser
     player.inventory = [];
     player.slamming = false;
+    player.speed = 160;
+    player.jump_power = 0.5;
+    player.slam_speed = 400
   },
   display: function () {
     invText = this.add.text(16, 16, 'Inventory:', {fontSize: '32px', fill: '#000'});

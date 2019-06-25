@@ -4,11 +4,11 @@ action = {
   },
 
   walkLeft: function () {
-    player.setVelocityX(-160);
+    player.setVelocityX(player.speed * -1);
     player.anims.play(player.zone + 'left', true);
   },
   walkRight: function () {
-    player.setVelocityX(160);
+    player.setVelocityX(player.speed);
     player.anims.play(player.zone + 'right', true);
   },
   faceFront: function () {
@@ -20,13 +20,13 @@ action = {
   slam: function () {
     player.anims.play(player.zone + 'slam', true);
     player.slamming = true;
-    player.setVelocityY(400);
+    player.setVelocityY(player.slam_speed);
   },
   jump: function () {
     if (player.body.onFloor()) {
       player.jumping = true;
       audio.play_sfx('jump');
-      player.setVelocityY((game.config.physics.arcade.gravity.y * -1) * 0.5);
+      player.setVelocityY((game.config.physics.arcade.gravity.y * -1) * player.jump_power);
     }
   },
   jumpToLevel: function (level) {

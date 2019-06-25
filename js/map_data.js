@@ -1,5 +1,7 @@
 map_data = {
   default: {
+    height_in_blocks: 16,
+    width_in_blocks: 41,
     "W": {method: "add_floor"},
     "+": {method: "add_water"},
     "#": {method: "add_box"},
@@ -36,7 +38,12 @@ map_data = {
       {method: "add_text", text: "Volume"}
     ],
     'V': [
-      {method: "add_slider", direction: "vertical", up_function: 'audio.music_up()', down_function: 'audio.music_down()'},
+      {
+        method: "add_slider",
+        direction: "vertical",
+        up_function: 'audio.music_up()',
+        down_function: 'audio.music_down()'
+      },
       {method: "add_slider", direction: "vertical", up_function: 'audio.sfx_up()', down_function: 'audio.sfx_down()'}
     ],
     "D": {method: "add_door", target: "001-boxes"}
@@ -144,8 +151,8 @@ map_data = {
   },
   "TEST-000-night-and-day": {
     "D": [
-      {method: "add_door", target: "F", name: "D"},
-      {method: "add_door", target: "D", name: "F"}
+      {method: "add_door", target: "D2", name: "D1"},
+      {method: "add_door", target: "D1", name: "D2"}
     ],
     "G": [
       {method: "add_door", target: "G2", name: "G1", sprite: "green_door"},
@@ -155,5 +162,6 @@ map_data = {
       {method: "add_door", target: "R2", name: "R1", sprite: "red_door"},
       {method: "add_door", target: "R1", name: "R2", sprite: "red_door"}
     ]
-  }
+  },
+  "TEST-0001-big": {}
 };
