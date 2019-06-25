@@ -1,5 +1,5 @@
 // Should be the only difference between master and gh-pages
-prefix = '/';
+prefix = '/night_and_day/';
 
 block_size = 48;
 height_in_blocks = 16;
