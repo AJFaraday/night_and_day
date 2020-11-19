@@ -56,5 +56,7 @@ function create() {
 
 function update() {
   action.readCursors.call(this);
+  map.draw_window();
 }
+
 

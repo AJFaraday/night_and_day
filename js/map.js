@@ -16,6 +16,7 @@ map = {
     xml_req.open('GET', (prefix + 'maps/' + name + '.txt?_=' + new Date().getTime()));
 
     xml_req.onload = function () {
+      map.active_indexes = [];
       platforms.clear(true, true);
       doors.clear(true, true);
       water.clear(true, true);
@@ -29,13 +30,13 @@ map = {
       night_box.clear();
       texts = [];
 
-      var data = {};
-      Object.assign(data, map_data['default']);
-      Object.assign(data, map_data[name]);
+      map.data = {};
+      Object.assign(map.data, map_data['default']);
+      Object.assign(map.data, map_data[name]);
       var shape = xml_req.responseText;
-      var rows = shape.split("\n");
+      map.rows = shape.split("\n");
       for (var y = 0; y < height_in_blocks; y++) {
-        var row = rows[y];
+        var row = map.rows[y];
         for (var x = 0; x < width_in_blocks; x++) {
           var xpos = x * block_size + (block_size / 2);
           var ypos = y * block_size + (block_size / 2);
@@ -48,8 +49,23 @@ map = {
 
       map.space_indexes = {};
       for (var y = 0; y < height_in_blocks; y++) {
-        var row = rows[y];
+        var row = map.rows[y];
         for (var x = 0; x < width_in_blocks; x++) {
+          if(row.charAt(x) == 'P') {
+            var xpos = x * block_size + (block_size / 2);
+            var ypos = y * block_size + (block_size / 2);
+            var space = map.getSpaceData(row.charAt(x), map.data);
+            if (space) {
+              if (space.offsetX) {
+                xpos += block_size * space.offsetX
+              }
+              if (space.offsetY) {
+                ypos += block_size * space.offsetY
+              }
+              map[space.method].call(that, xpos, ypos, space);
+            }
+          }
+          /*
           var xpos = x * block_size + (block_size / 2);
           var ypos = y * block_size + (block_size / 2);
           var space = map.getSpaceData(row.charAt(x), data);
@@ -62,6 +78,7 @@ map = {
             }
             map[space.method].call(that, xpos, ypos, space);
           }
+          */
         }
       }
       initialize.moveClouds();
@@ -70,6 +87,42 @@ map = {
     };
     xml_req.send();
   },
+
+  draw_window: function() {
+    var playerspace = {
+      x: Math.floor(player.x / block_size),
+      y: Math.floor(player.y / block_size)
+    }
+    var draw_window = 5;
+    if (map.rows === undefined) {
+      return;
+    }
+    for (var y = (playerspace.y - draw_window); y < (playerspace.y + draw_window); y++) {
+      var row = map.rows[y];
+      if(row === undefined) {
+        continue;
+      }
+      for (var x = (playerspace.x - draw_window); x < (playerspace.x + draw_window); x++) {
+        if (map.active_indexes.includes([x,y].toString())) {
+          continue;
+        }
+        var xpos = x * block_size + (block_size / 2);
+        var ypos = y * block_size + (block_size / 2);
+        var space = map.getSpaceData(row.charAt(x), map.data);
+        if (space) {
+          if (space.offsetX) {
+            xpos += block_size * space.offsetX
+          }
+          if (space.offsetY) {
+            ypos += block_size * space.offsetY
+          }
+          map[space.method].call(map, xpos, ypos, space);
+          map.active_indexes.push([x,y].toString());
+        }
+      }
+    }
+  },
+
   getSpaceData: function (char, data) {
     var data = data[char];
     if (Array.isArray(data)) {
@@ -115,7 +168,9 @@ map = {
 
   // Actions referred to in map_data
   add_floor: function (x, y, data) {
-    platforms.create(x, y, map.zone(x, y) + 'floor');
+    floor = platforms.create(x, y, map.zone(x, y) + 'floor');
+    // TODO possible lead on performance issue...
+    //floor.disableBody();
   },
   add_water: function (x, y, data) {
     var w = water.create(x, y, map.zone(x, y) + 'water');

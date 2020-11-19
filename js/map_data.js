@@ -36,7 +36,12 @@ map_data = {
       {method: "add_text", text: "Volume"}
     ],
     'V': [
-      {method: "add_slider", direction: "vertical", up_function: 'audio.music_up()', down_function: 'audio.music_down()'},
+      {
+        method: "add_slider",
+        direction: "vertical",
+        up_function: 'audio.music_up()',
+        down_function: 'audio.music_down()'
+      },
       {method: "add_slider", direction: "vertical", up_function: 'audio.sfx_up()', down_function: 'audio.sfx_down()'}
     ],
     "D": {method: "add_door", target: "001-boxes"}
@@ -154,5 +159,6 @@ map_data = {
     "R": [
       {method: "add_door", target: "R2", name: "R1", sprite: "red_door"},
       {method: "add_door", target: "R1", name: "R2", sprite: "red_door"}
-  ]
+    ]
+  }
 };
