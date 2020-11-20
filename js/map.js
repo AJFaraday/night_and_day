@@ -86,15 +86,15 @@ map = {
       x: Math.floor(player.x / block_size),
       y: Math.floor(player.y / block_size)
     }
-    if (centre.x < 7) {
-      centre.x = 7;
-    } else if (centre.x > (width_in_blocks - 8)) { // TODO solve this nonsense!
-      centre.x = (width_in_blocks - 8)
+    if (centre.x < window_width) {
+      centre.x = window_width;
+    } else if (centre.x > (width_in_blocks - window_width)) {
+      centre.x = (width_in_blocks - window_width)
     }
-    if (centre.y < 7) {
-      centre.y = 7;
-    } else if (centre.y > (height_in_blocks - 8)) { // TODO solve this nonsense!
-      centre.y = (height_in_blocks - 8)
+    if (centre.y < window_height) {
+      centre.y = window_height;
+    } else if (centre.y > (height_in_blocks - window_height)) {
+      centre.y = (height_in_blocks - window_height)
     }
     return centre;
   },
