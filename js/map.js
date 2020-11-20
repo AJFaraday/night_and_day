@@ -16,18 +16,7 @@ map = {
     xml_req.open('GET', (prefix + 'maps/' + name + '.txt?_=' + new Date().getTime()));
 
     xml_req.onload = function () {
-      map.active_indexes = [];
-      platforms.clear(true, true);
-      doors.clear(true, true);
-      water.clear(true, true);
-      keys.clear(true, true);
-      springs.clear(true, true);
-      sliders.clear(true, true);
-      slider_tracks.clear(true, true);
-      texts.forEach(function (t) {
-        t.destroy();
-      });
-      night_box.clear();
+      map.clear_everything();
       texts = [];
 
       map.data = {};
@@ -51,25 +40,10 @@ map = {
       for (var y = 0; y < height_in_blocks; y++) {
         var row = map.rows[y];
         for (var x = 0; x < width_in_blocks; x++) {
-          if(row.charAt(x) == 'P') {
+          var space = map.getSpaceData(row.charAt(x), map.data);
+          if (space && map.front_load_methods.includes(space.method)) {
             var xpos = x * block_size + (block_size / 2);
             var ypos = y * block_size + (block_size / 2);
-            var space = map.getSpaceData(row.charAt(x), map.data);
-            if (space) {
-              if (space.offsetX) {
-                xpos += block_size * space.offsetX
-              }
-              if (space.offsetY) {
-                ypos += block_size * space.offsetY
-              }
-              map[space.method].call(that, xpos, ypos, space);
-            }
-          }
-          /*
-          var xpos = x * block_size + (block_size / 2);
-          var ypos = y * block_size + (block_size / 2);
-          var space = map.getSpaceData(row.charAt(x), data);
-          if (space) {
             if (space.offsetX) {
               xpos += block_size * space.offsetX
             }
@@ -78,7 +52,6 @@ map = {
             }
             map[space.method].call(that, xpos, ypos, space);
           }
-          */
         }
       }
       initialize.moveClouds();
@@ -88,27 +61,64 @@ map = {
     xml_req.send();
   },
 
-  draw_window: function() {
-    var playerspace = {
+  front_load_methods: ['add_door', 'add_key', 'move_player', 'add_text', 'add_slider', 'add_slider_track'],
+
+  clear_everything: function () {
+    doors.clear(true, true);
+    keys.clear(true, true);
+    texts.forEach(function (t) {
+      t.destroy();
+    });
+    sliders.clear(true, true);
+    slider_tracks.clear(true, true);
+    map.clear_active_objects();
+  },
+
+  clear_active_objects: function () {
+    platforms.clear(true, true);
+    water.clear(true, true);
+    springs.clear(true, true);
+    night_box.clear();
+  },
+
+  get_window_centre: function () {
+    var centre = {
       x: Math.floor(player.x / block_size),
       y: Math.floor(player.y / block_size)
     }
-    var draw_window = 5;
-    if (map.rows === undefined) {
+    if (centre.x < 7) {
+      centre.x = 7;
+    } else if (centre.x > (width_in_blocks - 8)) { // TODO solve this nonsense!
+      centre.x = (width_in_blocks - 8)
+    }
+    if (centre.y < 7) {
+      centre.y = 7;
+    } else if (centre.y > (height_in_blocks - 8)) { // TODO solve this nonsense!
+      centre.y = (height_in_blocks - 8)
+    }
+    return centre;
+  },
+
+  draw_window: function () {
+    // This, but only objects outside the window
+    var window_centre = map.get_window_centre();
+    if (map.rows === undefined || (map.current_centre && map.current_centre == [window_centre.x, window_centre.y].toString())) {
       return;
     }
-    for (var y = (playerspace.y - draw_window); y < (playerspace.y + draw_window); y++) {
+    map.clear_active_objects();
+    map.current_centre = [window_centre.x, window_centre.y].toString();
+    for (var y = (window_centre.y - window_height); y < (window_centre.y + window_height + 1); y++) {
       var row = map.rows[y];
-      if(row === undefined) {
+      if (row === undefined) {
         continue;
       }
-      for (var x = (playerspace.x - draw_window); x < (playerspace.x + draw_window); x++) {
-        if (map.active_indexes.includes([x,y].toString())) {
-          continue;
-        }
+      for (var x = (window_centre.x - window_width); x < (window_centre.x + window_width + 1); x++) {
         var xpos = x * block_size + (block_size / 2);
         var ypos = y * block_size + (block_size / 2);
         var space = map.getSpaceData(row.charAt(x), map.data);
+        if (space && map.front_load_methods.includes(space.method)) {
+          continue;
+        }
         if (space) {
           if (space.offsetX) {
             xpos += block_size * space.offsetX
@@ -117,7 +127,6 @@ map = {
             ypos += block_size * space.offsetY
           }
           map[space.method].call(map, xpos, ypos, space);
-          map.active_indexes.push([x,y].toString());
         }
       }
     }

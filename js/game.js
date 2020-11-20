@@ -4,6 +4,8 @@ prefix = '/';
 block_size = 48;
 height_in_blocks = 16;
 width_in_blocks = 41;
+window_width = 9;
+window_height = 7;
 var config = {
   type: Phaser.AUTO,
   width: (block_size * width_in_blocks),
